@@ -1,5 +1,6 @@
 package com.semihunaldi.backendbootstrap.ws.controllers;
 
+import com.semihunaldi.backendbootstrap.entitymodel.mongo.TestDocument;
 import com.semihunaldi.backendbootstrap.ws.model.CreateUserDTO;
 import com.semihunaldi.backendbootstrap.ws.model.UserDTO;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RequestMapping(path = "/api")
 public interface UserWebService {
+
+	@RequestMapping(value = "/user/testMongo", method = {RequestMethod.GET})
+	TestDocument testMongo(@RequestParam(value = "userId", defaultValue = "") String userId);
 
 	@RequestMapping(value = "/user/queryUserByEmail", method = {RequestMethod.GET})
 	UserDTO queryUserByEmail(@RequestParam(value = "email", defaultValue = "") String email);

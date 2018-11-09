@@ -3,6 +3,7 @@ package com.semihunaldi.backendbootstrap.ws.controllers;
 import com.google.common.base.Preconditions;
 import com.semihunaldi.backendbootstrap.entitymodel.enums.SpecialExceptions;
 import com.semihunaldi.backendbootstrap.entitymodel.exceptions.UserException;
+import com.semihunaldi.backendbootstrap.entitymodel.mongo.TestDocument;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import com.semihunaldi.backendbootstrap.services.user.UserService;
 import com.semihunaldi.backendbootstrap.ws.model.CreateUserDTO;
@@ -21,6 +22,11 @@ public class UserWebServiceController extends BaseRestController implements User
 
 	@Autowired
 	private UserService userService;
+
+	@Override
+	public TestDocument testMongo(String userId) {
+		return userService.testMongo(userId);
+	}
 
 	public UserDTO queryUserByEmail(@RequestParam(value = "email", defaultValue = "") String email) {
 		try{

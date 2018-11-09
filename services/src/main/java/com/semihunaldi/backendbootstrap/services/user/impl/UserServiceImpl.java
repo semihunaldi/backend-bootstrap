@@ -2,9 +2,11 @@ package com.semihunaldi.backendbootstrap.services.user.impl;
 
 import com.semihunaldi.backendbootstrap.entitymodel.enums.SpecialExceptions;
 import com.semihunaldi.backendbootstrap.entitymodel.exceptions.UserException;
+import com.semihunaldi.backendbootstrap.entitymodel.mongo.TestDocument;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import com.semihunaldi.backendbootstrap.services.BaseServiceImpl;
 import com.semihunaldi.backendbootstrap.services.dao.user.UserRepository;
+import com.semihunaldi.backendbootstrap.services.mongo.TestRepository;
 import com.semihunaldi.backendbootstrap.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,6 +22,14 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private TestRepository testRepository;
+
+	@Override
+	public TestDocument testMongo(String userId) {
+		return testRepository.findByTestString(userId);
+	}
 
 	@Override
 	public User findUserByEmail(String email) {
