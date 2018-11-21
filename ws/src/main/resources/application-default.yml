@@ -40,5 +40,6 @@ spring:
       enabled: true
       path: /h2
 
-application:
-  resource_id: ${RESOURCE_ID:backend-bootstrap-api}
+app:
+  properties:
+    resourceId: ${RESOURCE_ID:backend-bootstrap-api}

@@ -1,7 +1,7 @@
 package com.semihunaldi.backendbootstrap.ws.resourceserverconfig;
 
+import com.semihunaldi.backendbootstrap.ws.config.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -21,8 +21,8 @@ import javax.sql.DataSource;
 @EnableResourceServer
 public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapter {
 
-	@Value("${application.resource_id}")
-	private String resourceId;
+	@Autowired
+	private AppProperties appProperties;
 
 	@Autowired
 	private DataSource dataSource;
@@ -33,8 +33,8 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 	}
 
 	@Override
-	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-		resources.resourceId(resourceId).tokenStore(tokenStore());
+	public void configure(ResourceServerSecurityConfigurer resources) {
+		resources.resourceId(appProperties.getResourceId()).tokenStore(tokenStore());
 	}
 
 	@Override
