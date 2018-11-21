@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  session:
+    store-type: none
+
+  datasource:
+#    url: jdbc:h2:mem:backendbootstrapdb
+    url: jdbc:h2:tcp://localhost:9092/mem:backendbootstrapdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+#    schema: classpath:/db/sql/schema.sql
+#    data: classpath:/db/sql/import.sql
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+    hibernate:
+      ddl-auto: create
+    generate-ddl: false
+
+  data:
+    mongodb:
+#      authentication-database: admin
+#      username: username
+#      password: password
+      database: backendbootstrapdb
+      host: localhost
+      port: 27017
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+application:
+  resource_id: ${RESOURCE_ID:backend-bootstrap-api}
