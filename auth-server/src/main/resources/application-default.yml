@@ -19,6 +19,13 @@ spring:
     hibernate:
       ddl-auto: none
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
   h2:
     console:
       enabled: true

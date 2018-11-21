@@ -20,6 +20,7 @@
         <module>ws</module>
         <module>services</module>
         <module>auth-server</module>
+        <module>eureka-server</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -40,6 +40,13 @@ spring:
       enabled: true
       path: /h2
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
 app:
   properties:
     resourceId: ${RESOURCE_ID:backend-bootstrap-api}
