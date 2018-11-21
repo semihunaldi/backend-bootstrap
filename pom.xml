@@ -19,6 +19,7 @@
         <module>entity-model</module>
         <module>ws</module>
         <module>services</module>
+        <module>auth-server</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -58,6 +59,10 @@
     </dependencies>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
         <guava.version>24.1-jre</guava.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <lombok.version>1.16.20</lombok.version>
