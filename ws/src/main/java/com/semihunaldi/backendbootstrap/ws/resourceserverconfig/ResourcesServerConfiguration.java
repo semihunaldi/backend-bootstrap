@@ -34,8 +34,19 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {
+//		resources.resourceId(appProperties.getResourceId()).tokenServices(remoteTokenServices());
 		resources.resourceId(appProperties.getResourceId()).tokenStore(tokenStore());
 	}
+
+//	@Bean
+//	public RemoteTokenServices remoteTokenServices() {
+//		final RemoteTokenServices tokenServices = new RemoteTokenServices();
+//		String checkTokenUri = "http://localhost:8081/oauth/check_token";
+//		tokenServices.setCheckTokenEndpointUrl(checkTokenUri);
+//		tokenServices.setClientId("curl_client");
+//		tokenServices.setClientSecret("password");
+//		return tokenServices;
+//	}
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
