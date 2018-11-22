@@ -12,9 +12,9 @@ import org.quartz.TriggerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.EventListener;
 
 import java.util.Date;
 import java.util.UUID;
@@ -23,16 +23,20 @@ import java.util.UUID;
  * Created by semihunaldi on 22.11.2018
  */
 
-@Component
-public class ApplicationStartupListener implements ApplicationListener<ContextRefreshedEvent> {
+@Configuration
+public class ApplicationDeploymentEvents {
 
-	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private Scheduler scheduler;
 
-	@Override
-	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+	@EventListener(ApplicationReadyEvent.class)
+	public void applicationReady() {
+		createSampleJob();
+	}
+
+	private void createSampleJob() {
 		JobDataMap jobDataMap = new JobDataMap();
 		jobDataMap.put("test", "test value");
 		JobDetail jobDetail = JobBuilder.newJob(SampleQuartzJob.class)

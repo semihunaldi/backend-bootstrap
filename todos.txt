@@ -1,4 +1,3 @@
 liquibase or flyway
-spring-aop
 swagger
 ui module -> jsf and js/html(tymeleaf? or angular or ???)
