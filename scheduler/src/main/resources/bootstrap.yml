@@ -1,5 +1,5 @@
 spring:
   application:
-    name: backend-bootstrap
+    name: scheduler
   profiles:
     active: default,dev
