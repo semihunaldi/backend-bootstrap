@@ -1,8 +1,11 @@
 package com.semihunaldi.backendbootstrap.authserver.config;
 
+import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +24,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private Environment env;
+
 	@Bean
 	@Qualifier("bCryptPasswordEncoder")
 	public PasswordEncoder passwordEncoder() {
@@ -29,13 +35,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	@Override
-	public UserDetailsService userDetailsServiceBean() throws Exception {
+	public UserDetailsService userDetailsServiceBean() {
 		return new CustomJdbcUserDetailsService();
 	}
 
 	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/webjars/**", "/h2/**");
+	public void configure(WebSecurity web) {
+		if(Lists.newArrayList(env.getActiveProfiles()).contains("dev")){
+			web.ignoring().antMatchers("/webjars/**", "/h2/**");
+		} else{
+			web.ignoring().antMatchers("/webjars/**");
+		}
 	}
 
 	@Override

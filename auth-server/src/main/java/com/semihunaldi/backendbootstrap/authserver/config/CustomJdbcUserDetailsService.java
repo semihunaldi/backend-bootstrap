@@ -24,14 +24,12 @@ public class CustomJdbcUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException(String.format("User %s cannot be found", username));
 		}
 
-		User user = new User(credentials.getUsername(),
+		return new User(credentials.getUsername(),
 				credentials.getPassword(),
 				credentials.isEnabled(),
 				true,
 				true,
 				true,
 				credentials.getAuthorities());
-
-		return user;
 	}
 }

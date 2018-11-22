@@ -11,3 +11,10 @@ spring:
           password: @bitbucket-git-password@
   profiles:
     active: bitbucket-git
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true

@@ -53,7 +53,5 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 				response.setHeader("Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
 			}
 		});
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
 	}
 }
