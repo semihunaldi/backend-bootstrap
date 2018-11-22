@@ -1,15 +1,12 @@
 package com.semihunaldi.backendbootstrap.entitymodel.user;
 
 import com.semihunaldi.backendbootstrap.entitymodel.AbstractEntity;
-import com.semihunaldi.backendbootstrap.entitymodel.enums.YesNo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -45,14 +42,7 @@ public class User extends AbstractEntity {
 
 	private String instagramId;
 
+	private String fcmTokenId;
+
 	private Integer age;
-
-	private String location;
-
-	private String timeZone;
-
-	@Enumerated(EnumType.STRING)
-	private YesNo isProtectedAccount;
-
-	private Integer twitterFriendCount;
 }

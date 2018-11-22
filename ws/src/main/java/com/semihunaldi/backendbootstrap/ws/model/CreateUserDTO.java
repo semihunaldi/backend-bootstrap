@@ -32,9 +32,9 @@ public class CreateUserDTO extends BaseResult {
 
 	private String instagramId;
 
-	private Integer age;
+	private String fcmTokenId;
 
-	private String location;
+	private Integer age;
 
 	private String ipAddress;
 
@@ -69,10 +69,10 @@ public class CreateUserDTO extends BaseResult {
 		user.setEmail(createUserDTO.getEmail());
 		user.setMobilePhone(createUserDTO.getMobilePhone());
 		user.setAge(createUserDTO.getAge());
-		user.setLocation(createUserDTO.getLocation());
 		user.setTwitterId(createUserDTO.getTwitterId());
 		user.setInstagramId(createUserDTO.getInstagramId());
 		user.setFacebookId(createUserDTO.getFacebookId());
+		user.setFcmTokenId(createUserDTO.getFcmTokenId());
 		if(StringUtils.isNotBlank(createUserDTO.getUserName())){
 			user.setId(createUserDTO.getUserId());
 		}
@@ -89,12 +89,12 @@ public class CreateUserDTO extends BaseResult {
 		createUserDTO.setEmail(user.getEmail());
 		createUserDTO.setMobilePhone(user.getMobilePhone());
 		createUserDTO.setAge(user.getAge());
-		createUserDTO.setLocation(user.getLocation());
 		createUserDTO.setTwitterId(user.getTwitterId());
 		createUserDTO.setInstagramId(user.getInstagramId());
 		createUserDTO.setFacebookId(user.getFacebookId());
 		createUserDTO.setUserId(user.getId());
 		createUserDTO.setIpAddress(user.getUpdateUserIP());
+		createUserDTO.setFcmTokenId(user.getFcmTokenId());
 		return createUserDTO;
 	}
 }

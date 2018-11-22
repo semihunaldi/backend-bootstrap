@@ -23,6 +23,7 @@
         <module>eureka-server</module>
         <module>config-server</module>
         <module>scheduler</module>
+        <module>notification</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -80,6 +81,7 @@
         <spring-cloud.version>Greenwich.M3</spring-cloud.version>
         <spring-boot-starter-parent.version>2.1.0.RELEASE</spring-boot-starter-parent.version>
         <jedis.version>2.9.0</jedis.version>
+        <firebase-admin.version>6.5.0</firebase-admin.version>
     </properties>
 
     <repositories>
