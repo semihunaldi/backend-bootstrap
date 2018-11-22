@@ -1,32 +1,80 @@
 version: '3'
 
 services:
-  mysql:
-    build:
-      context: ./mysql
-#    restart: always
-#    command: mysqld --default-authentication-plugin=mysql_native_password
-    ports:
-     - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_USER: backend-bootstrap-user
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: backendbootstrapdb
-    volumes:
-      - ./mysqlDbDir:/var/lib/mysql
+#  mysql:
+#    build:
+#      context: ./mysql
+##    restart: always
+##    command: mysqld --default-authentication-plugin=mysql_native_password
+#    ports:
+#     - "3306:3306"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: rootpassword
+#      MYSQL_USER: backend-bootstrap-user
+#      MYSQL_PASSWORD: password
+#      MYSQL_DATABASE: backendbootstrapdb
+#    volumes:
+#      - ./mysqlDbDir:/var/lib/mysql
+#
+#  mongo:
+#    build:
+#      context: ./mongo
+##    restart: always
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: backend-bootstrap-user
+#      MONGO_INITDB_ROOT_PASSWORD: password
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - ./mongoDbDir:/data/db
 
-  mongo:
+  eureka-server:
+    hostname: backendbootstrap-eureka-server
+    command: --network="host"
     build:
-      context: ./mongo
-#    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: backend-bootstrap-user
-      MONGO_INITDB_ROOT_PASSWORD: password
+      context: eureka-server
     ports:
-      - "27017:27017"
-    volumes:
-      - ./mongoDbDir:/data/db
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,dev
+
+  config-server:
+    hostname: backendbootstrap-config-server
+    command: --network="host"
+    build:
+      context: config-server
+    depends_on:
+      - eureka-server
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,dev
+
+  auth-server:
+    hostname: backendbootstrap-auth-server
+    command: --network="host"
+    build:
+      context: auth-server
+    depends_on:
+      - eureka-server
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,dev
+
+  ws:
+    hostname: backendbootstrap-ws
+    command: --network="host"
+    build:
+      context: ws
+    depends_on:
+      - auth-server
+      - eureka-server
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,dev
+
 
 #volumes:
 #  mysql_data:
