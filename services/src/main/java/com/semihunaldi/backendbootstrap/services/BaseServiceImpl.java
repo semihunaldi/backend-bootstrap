@@ -3,8 +3,10 @@ package com.semihunaldi.backendbootstrap.services;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.semihunaldi.backendbootstrap.entitymodel.AbstractEntity;
+import com.semihunaldi.backendbootstrap.services.redis.CacheService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolation;
@@ -25,6 +27,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 @Transactional(readOnly = true)
 public class BaseServiceImpl {
+
+	@Autowired
+	private CacheService cacheService;
 
 	protected final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
