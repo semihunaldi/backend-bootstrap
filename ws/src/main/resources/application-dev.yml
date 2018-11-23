@@ -24,7 +24,7 @@ spring:
           schema-generation:
             create-source: metadata
             scripts:
-              action: create
+              action: none
               create-target: create.sql
     hibernate:
       ddl-auto: create

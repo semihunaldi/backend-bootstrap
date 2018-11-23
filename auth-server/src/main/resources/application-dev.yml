@@ -17,7 +17,7 @@ spring:
           time_zone: UTC
     show-sql: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     generate-ddl: false
 eureka:
   client:

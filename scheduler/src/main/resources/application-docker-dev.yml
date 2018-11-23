@@ -38,7 +38,7 @@ spring:
           schema-generation:
             create-source: metadata
             scripts:
-              action: create
+              action: none
               create-target: create.sql
     show-sql: false
     hibernate:
