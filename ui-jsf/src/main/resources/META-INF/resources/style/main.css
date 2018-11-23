@@ -1,0 +1,54 @@
+.ui-selectonemenu {
+/*    display: inline-block;
+    position: relative;
+    width: auto;
+    zoom: 1;
+    cursor: pointer;*/
+    padding-right: 0em !important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+/*    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;*/
+    padding: 0 0px !important;
+    width: auto !important;
+}
+
+.form-group{
+    margin-bottom: 10px!important;
+    width: 100%;
+}
+fieldset .form-group{
+    width: 100%;
+}
+
+.ui-spinner-input {
+    vertical-align: middle;
+    text-align: left;
+    padding-right: 5px;
+}
+
+.col-md-6{
+    padding-bottom: 5px;
+}
+
+
+.ui-accordion .ui-accordion-content {
+    font-size: 10px;
+}
+
+
+.ui-datatable .ui-widget
+{
+    font-size: 10px;
+}
+
+.ui-datatable-tablewrapper {
+    font-size: 10px;
+}

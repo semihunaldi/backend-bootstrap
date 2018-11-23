@@ -1,0 +1,11 @@
+server:
+  port: 9090
+
+jsf:
+  PROJECT_STAGE: Development
+  primefaces:
+    theme: bootstrap
+
+app:
+  properties:
+    testProperty: testString

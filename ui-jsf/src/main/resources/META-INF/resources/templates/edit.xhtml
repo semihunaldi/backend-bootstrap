@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <div class="form-group">
+        <div class="col-md-#{colwidth ne null ? colwidth : '4'}">
+            <p:outputLabel styleClass="control-label" rendered="#{inputName ne null}" for="#{inputName}">
+                <ui:insert name="_label"/>
+            </p:outputLabel>
+            <p:outputLabel styleClass="control-label" rendered="#{inputName == null}">
+                <ui:insert name="_label"/>
+            </p:outputLabel>
+        </div>
+        <div class="col-md-#{colwidth ne null ? colwidth : '4'}">
+            <ui:insert />
+        </div>
+    </div>
+
+</ui:composition>

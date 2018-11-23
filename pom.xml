@@ -23,6 +23,7 @@
         <module>eureka-server</module>
         <module>config-server</module>
         <module>scheduler</module>
+        <module>ui-jsf</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -94,6 +95,8 @@
         <jedis.version>2.9.0</jedis.version>
         <firebase-admin.version>6.5.0</firebase-admin.version>
         <postgresql.version>42.2.5</postgresql.version>
+
+        <joinfaces.version>3.3.0-rc2</joinfaces.version>
     </properties>
 
     <repositories>

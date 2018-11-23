@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/generalTemplate.xhtml">
+
+    <ui:define name="mainContent">
+        <br/>
+
+        <h:outputText value=" #{pfExceptionHandler.message}" style="font-size: 13px;font-weight: bold"/>
+
+        <br/>
+        <br/>
+        <p:outputPanel rendered="#{'Development' eq facesContext.application.projectStage.name()}">
+            <h:outputLabel value="Detail:"/>
+            <br/>
+
+            <h:outputText escape="false" value="#{pfExceptionHandler.formattedStackTrace}"/>
+        </p:outputPanel>
+    </ui:define>
+
+</ui:composition>
