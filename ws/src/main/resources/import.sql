@@ -1,2 +1,2 @@
-INSERT INTO t_user (id,deleted,age,email,first_name,last_name,location,mobile_phone,user_name) VALUES ('9B18591A-C518-4CDE-BA3B-9ADC3145D677','0','25','test@test.com','FirstTest','LastTest','TR','5331234565','test');
+INSERT INTO t_user (id,deleted,create_user,create_userip,,first_name,last_name,user_name,email,mobile_phone,facebook_id,twitter_id,instagram_id,fcm_token_id,age) VALUES ('9B18591A-C518-4CDE-BA3B-9ADC3145D677','0','app-user','127.0.0.1','Name','Surname','testuser','test@test.com','905553332211','fbid','twid',insid,'fcmtknid','26');
 commit;

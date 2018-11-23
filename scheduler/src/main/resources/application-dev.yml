@@ -38,7 +38,7 @@ spring:
               create-target: create.sql
     hibernate:
       ddl-auto: none
-    generate-ddl: true
+    generate-ddl: false
   data:
     mongodb:
 #      authentication-database: admin
