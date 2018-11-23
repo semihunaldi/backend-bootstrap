@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://bitbucket.org/semihunaldi/config-server-properties.git
+          username: @bitbucket-git-username@
+          password: @bitbucket-git-password@
+  profiles:
+    active: bitbucket-git
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://eureka-server:8761/eureka}
+  instance:
+    preferIpAddress: true

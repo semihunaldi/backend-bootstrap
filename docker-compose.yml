@@ -1,21 +1,22 @@
 version: '3'
 
 services:
-#  mysql:
-#    build:
-#      context: ./mysql
-##    restart: always
-##    command: mysqld --default-authentication-plugin=mysql_native_password
-#    ports:
-#     - "3306:3306"
-#    environment:
-#      MYSQL_ROOT_PASSWORD: rootpassword
-#      MYSQL_USER: backend-bootstrap-user
-#      MYSQL_PASSWORD: password
-#      MYSQL_DATABASE: backendbootstrapdb
-#    volumes:
-#      - ./mysqlDbDir:/var/lib/mysql
-#
+  mysql:
+    build:
+      context: ./mysql
+#    restart: always
+#    command: mysqld --default-authentication-plugin=mysql_native_password
+    ports:
+     - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: backend-bootstrap-user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: backendbootstrapdb
+    volumes:
+      - ./mysqlDbDir:/var/lib/mysql
+#      - ./db-init/:/docker-entrypoint-initdb.d
+
 #  mongo:
 #    build:
 #      context: ./mongo
@@ -27,54 +28,51 @@ services:
 #      - "27017:27017"
 #    volumes:
 #      - ./mongoDbDir:/data/db
-
-  eureka-server:
-    hostname: backendbootstrap-eureka-server
-    command: --network="host"
-    build:
-      context: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=default,dev
-
-  config-server:
-    hostname: backendbootstrap-config-server
-    command: --network="host"
-    build:
-      context: config-server
-    depends_on:
-      - eureka-server
-    ports:
-      - "8888:8888"
-    environment:
-      - SPRING_PROFILES_ACTIVE=default,dev
-
-  auth-server:
-    hostname: backendbootstrap-auth-server
-    command: --network="host"
-    build:
-      context: auth-server
-    depends_on:
-      - eureka-server
-    ports:
-      - "8081:8081"
-    environment:
-      - SPRING_PROFILES_ACTIVE=default,dev
-
-  ws:
-    hostname: backendbootstrap-ws
-    command: --network="host"
-    build:
-      context: ws
-    depends_on:
-      - auth-server
-      - eureka-server
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=default,dev
-
+#
+#  eureka-server:
+#    hostname: backendbootstrap-eureka-server
+#    build:
+#      context: eureka-server
+#    depends_on:
+#      - mongo
+#      - mysql
+#    ports:
+#      - "8761:8761"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+##  config-server:
+##    hostname: backendbootstrap-config-server
+##    build:
+##      context: config-server
+##    depends_on:
+##      - eureka-server
+##    ports:
+##      - "8888:8888"
+##    environment:
+##      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+#  auth-server:
+#    hostname: backendbootstrap-auth-server
+#    build:
+#      context: auth-server
+#    depends_on:
+#      - eureka-server
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+#  ws:
+#    hostname: backendbootstrap-ws
+#    build:
+#      context: ws
+#    depends_on:
+#      - auth-server
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=default,docker-dev
 
 #volumes:
 #  mysql_data:

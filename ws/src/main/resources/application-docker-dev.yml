@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/backendbootstrapdb
+    username: backend-bootstrap-user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    schema: classpath:/db/sql/schema.sql
+#    data: classpath:/db/sql/import.sql
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: create.sql
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+
+  data:
+    mongodb:
+      authentication-database: admin
+      username: backend-bootstrap-user
+      password: password
+      database: backendbootstrapdb
+      host: mongo
+      port: 27017
+
+  h2:
+    console:
+      enabled: false
+      path: /h2
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://eureka-server:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+app:
+  properties:
+    resourceId: ${RESOURCE_ID:backend-bootstrap-api}
