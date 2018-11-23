@@ -1,12 +1,12 @@
-package com.semihunaldi.backendbootstrap.notification;
+package com.semihunaldi.backendbootstrap.services.notification;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
-import com.semihunaldi.backendbootstrap.notification.model.DetailsDto;
-import com.semihunaldi.backendbootstrap.notification.model.FcmMessage;
 import com.semihunaldi.backendbootstrap.services.BaseServiceImpl;
+import com.semihunaldi.backendbootstrap.services.notification.model.DetailsDto;
+import com.semihunaldi.backendbootstrap.services.notification.model.FcmMessage;
 import com.semihunaldi.backendbootstrap.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.notification.model;
+package com.semihunaldi.backendbootstrap.services.notification.model;
 
 import lombok.Data;
 

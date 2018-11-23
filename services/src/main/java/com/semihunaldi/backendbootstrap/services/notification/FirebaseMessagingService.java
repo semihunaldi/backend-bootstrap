@@ -1,7 +1,7 @@
-package com.semihunaldi.backendbootstrap.notification;
+package com.semihunaldi.backendbootstrap.services.notification;
 
-import com.semihunaldi.backendbootstrap.notification.model.FcmMessage;
 import com.semihunaldi.backendbootstrap.services.BaseService;
+import com.semihunaldi.backendbootstrap.services.notification.model.FcmMessage;
 
 /**
  * Created by semihunaldi on 22.11.2018

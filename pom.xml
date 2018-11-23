@@ -23,7 +23,6 @@
         <module>eureka-server</module>
         <module>config-server</module>
         <module>scheduler</module>
-        <module>notification</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,27 +1,28 @@
-package com.semihunaldi.backendbootstrap.notification.config;
+package com.semihunaldi.backendbootstrap.services.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.event.EventListener;
+import org.springframework.context.annotation.Profile;
 
+import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * Created by semihunaldi on 22.11.2018
+ * Created by semihunaldi on 23.11.2018
  */
 
 @Configuration
-public class ApplicationDeploymentEvents {
+@Profile("firebase")
+public class FireBaseConfig {
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void applicationReady() {
+	@PostConstruct
+	public void init() {
 		initializeFirebaseApp();
 	}
 
