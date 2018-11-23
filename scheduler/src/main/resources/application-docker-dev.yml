@@ -2,6 +2,7 @@ server:
   port: 9090
 
 spring:
+
   quartz:
     overwrite-existing-jobs: true
     auto-startup: true
@@ -11,22 +12,27 @@ spring:
     properties:
       org:
         quartz:
+          jobStore:
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
           threadPool:
             threadCount: 5
 
   datasource:
-    url: jdbc:mysql://mysql:3306/backendbootstrapdb
+    url: jdbc:postgresql://postgres:5432/backendbootstrapdb
     username: backend-bootstrap-user
     password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: never
 
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
         format_sql: true
         jdbc:
           time_zone: UTC
+          lob:
+            non_contextual_creation: true
       javax:
         persistence:
           schema-generation:
@@ -38,6 +44,7 @@ spring:
     hibernate:
       ddl-auto: none
     generate-ddl: false
+
   data:
     mongodb:
       authentication-database: admin

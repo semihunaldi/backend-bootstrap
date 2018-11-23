@@ -14,6 +14,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by semihunaldi on 9.11.2018
  */
@@ -30,7 +32,15 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	@DisableLogging
 	public TestDocument testMongo(String userId) {
-		return testRepository.findByTestString(userId);
+		TestDocument byTestString = testRepository.findByTestString(userId);
+		if(byTestString == null) {
+			TestDocument testDocument = new TestDocument();
+			testDocument.setUserId("1234");
+			testDocument.setTimestamp(new Date());
+			testDocument.setTestString("testString");
+			return testRepository.save(testDocument);
+		}
+		return byTestString;
 	}
 
 	@Override

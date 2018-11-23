@@ -1,79 +1,130 @@
 version: '3'
 
 services:
-  mysql:
-    build:
-      context: ./mysql
-#    restart: always
-#    command: mysqld --default-authentication-plugin=mysql_native_password
+  postgres:
+    image: postgres:9.5.15-alpine
+    restart: always
     ports:
-     - "3306:3306"
+      - "5432:5432"
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_USER: backend-bootstrap-user
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: backendbootstrapdb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: backend-bootstrap-user
+      POSTGRES_DB: backendbootstrapdb
     volumes:
-      - ./mysqlDbDir:/var/lib/mysql
-#      - ./db-init/:/docker-entrypoint-initdb.d
+      - ./postgresDbDir:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+#
 
-#  mongo:
-#    build:
-#      context: ./mongo
-##    restart: always
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: backend-bootstrap-user
-#      MONGO_INITDB_ROOT_PASSWORD: password
-#    ports:
-#      - "27017:27017"
-#    volumes:
-#      - ./mongoDbDir:/data/db
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: backend-bootstrap-user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongoDbDir:/data/db
 #
-#  eureka-server:
-#    hostname: backendbootstrap-eureka-server
+
+#  config-server:
+#    hostname: backendbootstrap-config-server
 #    build:
-#      context: eureka-server
-#    depends_on:
-#      - mongo
-#      - mysql
-#    ports:
-#      - "8761:8761"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=default,docker-dev
-#
-##  config-server:
-##    hostname: backendbootstrap-config-server
-##    build:
-##      context: config-server
-##    depends_on:
-##      - eureka-server
-##    ports:
-##      - "8888:8888"
-##    environment:
-##      - SPRING_PROFILES_ACTIVE=default,docker-dev
-#
-#  auth-server:
-#    hostname: backendbootstrap-auth-server
-#    build:
-#      context: auth-server
+#      context: config-server
 #    depends_on:
 #      - eureka-server
 #    ports:
-#      - "8081:8081"
+#      - "8888:8888"
 #    environment:
 #      - SPRING_PROFILES_ACTIVE=default,docker-dev
 #
-#  ws:
-#    hostname: backendbootstrap-ws
-#    build:
-#      context: ws
-#    depends_on:
-#      - auth-server
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=default,docker-dev
+
+  eureka-server:
+    hostname: backendbootstrap-eureka-server
+    restart: always
+    build:
+      context: eureka-server
+    depends_on:
+      - mongo
+      - postgres
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+
+  auth-server:
+    hostname: backendbootstrap-auth-server
+    restart: always
+    build:
+      context: auth-server
+    depends_on:
+      - eureka-server
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+
+  scheduler:
+    hostname: backendbootstrap-scheduler
+    restart: always
+    build:
+      context: scheduler
+    depends_on:
+      - postgres
+      - mongo
+      - eureka-server
+    ports:
+      - "9090:9090"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+
+  ws:
+    hostname: backendbootstrap-ws
+    restart: always
+    build:
+      context: ws
+    depends_on:
+      - auth-server
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,docker-dev
+#
+
 
 #volumes:
 #  mysql_data:
 #  mongo_data:
+
+
+
+
+
+
+
+
+
+
+
+
+######################################################################################################################
+#### old ####
+
+#  mysql:
+#    image: mysql:5.7.24
+##    restart: always
+##    command: mysqld --default-authentication-plugin=mysql_native_password
+#    ports:
+#     - "3306:3306"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: rootpassword
+#      MYSQL_USER: backend-bootstrap-user
+#      MYSQL_PASSWORD: password
+#      MYSQL_DATABASE: backendbootstrapdb
+#    volumes:
+#      - ./mysqlDbDir:/var/lib/mysql
+#      - ./db-init/:/docker-entrypoint-initdb.d
+
