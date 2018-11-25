@@ -54,5 +54,6 @@ eureka:
 app:
   properties:
     resourceId: ${RESOURCE_ID:backend-bootstrap-api}
-
-
+    developerName: Semih Unaldi
+    developerUrl: https://www.semihunaldi.com
+    developerMail: semihunaldi@gmail.com

@@ -12,4 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AppProperties {
 
 	private String resourceId;
+	private String developerName;
+	private String developerUrl;
+	private String developerMail;
 }

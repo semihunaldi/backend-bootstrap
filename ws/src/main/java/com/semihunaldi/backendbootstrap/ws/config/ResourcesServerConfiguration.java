@@ -1,6 +1,5 @@
-package com.semihunaldi.backendbootstrap.ws.resourceserverconfig;
+package com.semihunaldi.backendbootstrap.ws.config;
 
-import com.semihunaldi.backendbootstrap.ws.config.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +26,15 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 	@Autowired
 	private DataSource dataSource;
 
+	private static final String[] AUTH_WHITELIST = {
+
+			// -- swagger ui
+			"/swagger-resources/**",
+			"/swagger-ui.html",
+			"/v2/api-docs",
+			"/webjars/**"
+	};
+
 	@Bean
 	public TokenStore tokenStore() {
 		return new JdbcTokenStore(dataSource);
@@ -34,23 +42,24 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {
-//		resources.resourceId(appProperties.getResourceId()).tokenServices(remoteTokenServices());
+		//		resources.resourceId(appProperties.getResourceId()).tokenServices(remoteTokenServices());
 		resources.resourceId(appProperties.getResourceId()).tokenStore(tokenStore());
 	}
 
-//	@Bean
-//	public RemoteTokenServices remoteTokenServices() {
-//		final RemoteTokenServices tokenServices = new RemoteTokenServices();
-//		String checkTokenUri = "http://localhost:8081/oauth/check_token";
-//		tokenServices.setCheckTokenEndpointUrl(checkTokenUri);
-//		tokenServices.setClientId("curl_client");
-//		tokenServices.setClientSecret("password");
-//		return tokenServices;
-//	}
+	//	@Bean
+	//	public RemoteTokenServices remoteTokenServices() {
+	//		final RemoteTokenServices tokenServices = new RemoteTokenServices();
+	//		String checkTokenUri = "http://localhost:8081/oauth/check_token";
+	//		tokenServices.setCheckTokenEndpointUrl(checkTokenUri);
+	//		tokenServices.setClientId("curl_client");
+	//		tokenServices.setClientSecret("password");
+	//		return tokenServices;
+	//	}
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+				.antMatchers(AUTH_WHITELIST).permitAll()
 				.antMatchers(HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
 				.antMatchers(HttpMethod.POST, "/**").access("#oauth2.hasScope('write')")
 				.antMatchers(HttpMethod.PATCH, "/**").access("#oauth2.hasScope('write')")

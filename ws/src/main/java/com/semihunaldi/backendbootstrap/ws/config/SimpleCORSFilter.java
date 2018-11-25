@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.ws.resourceserverconfig;
+package com.semihunaldi.backendbootstrap.ws.config;
 
 import org.springframework.stereotype.Component;
 
