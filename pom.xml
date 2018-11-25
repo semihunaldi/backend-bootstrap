@@ -106,6 +106,8 @@
         <postgresql.version>42.2.5</postgresql.version>
 
         <joinfaces.version>3.3.0-rc2</joinfaces.version>
+
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
     </properties>
 
     <repositories>
