@@ -12,7 +12,7 @@ import javax.faces.view.ViewScoped;
 
 @Component
 @ViewScoped
-public class IndexController {
+public class IndexController extends BaseController {
 
 	@Getter
 	@Setter
@@ -20,5 +20,6 @@ public class IndexController {
 
 	public void buttonListener() {
 		System.out.println("Hello World");
+		throw new RuntimeException("asda");
 	}
 }
