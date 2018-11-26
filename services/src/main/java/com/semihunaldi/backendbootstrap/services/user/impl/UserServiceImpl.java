@@ -32,10 +32,10 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	@DisableLogging
 	public TestDocument testMongo(String userId) {
-		TestDocument byTestString = testRepository.findByTestString(userId);
-		if(byTestString == null) {
+		TestDocument byTestString = testRepository.findByUserId(userId);
+		if(byTestString == null){
 			TestDocument testDocument = new TestDocument();
-			testDocument.setUserId("1234");
+			testDocument.setUserId(userId);
 			testDocument.setTimestamp(new Date());
 			testDocument.setTestString("testString");
 			return testRepository.save(testDocument);

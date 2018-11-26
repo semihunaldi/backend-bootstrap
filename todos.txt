@@ -1,5 +1,4 @@
 liquibase or flyway
-swagger auth complete
 ui module -> jsf and js/html(tymeleaf? or angular or ???)
 
 proper junit spring boot testing with mocks vs

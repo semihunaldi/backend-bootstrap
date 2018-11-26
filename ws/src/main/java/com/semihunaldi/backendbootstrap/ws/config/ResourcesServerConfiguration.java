@@ -27,12 +27,12 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 	private DataSource dataSource;
 
 	private static final String[] AUTH_WHITELIST = {
-
 			// -- swagger ui
 			"/swagger-resources/**",
 			"/swagger-ui.html",
 			"/v2/api-docs",
-			"/webjars/**"
+			"/webjars/**",
+			"/csrf"
 	};
 
 	@Bean
@@ -49,10 +49,10 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 	//	@Bean
 	//	public RemoteTokenServices remoteTokenServices() {
 	//		final RemoteTokenServices tokenServices = new RemoteTokenServices();
-	//		String checkTokenUri = "http://localhost:8081/oauth/check_token";
+	//		String checkTokenUri = appProperties.getAuthServer()+"/oauth/check_token";
 	//		tokenServices.setCheckTokenEndpointUrl(checkTokenUri);
-	//		tokenServices.setClientId("curl_client");
-	//		tokenServices.setClientSecret("password");
+	//		tokenServices.setClientId(appProperties.getClientId());
+	//		tokenServices.setClientSecret(appProperties.getClientSecret());
 	//		return tokenServices;
 	//	}
 

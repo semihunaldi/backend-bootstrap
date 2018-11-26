@@ -59,3 +59,6 @@ app:
     developerName: Semih Unaldi
     developerUrl: https://www.semihunaldi.com
     developerMail: semihunaldi@gmail.com
+    authServer: http://auth-server:8081
+    clientId: curl_client
+    clientSecret: password
