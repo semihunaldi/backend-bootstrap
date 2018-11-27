@@ -3,34 +3,29 @@
 ### Backend Bootstrap Project with Spring Boot
 
 
-
-
-# Security oauth2
-users: oauth_admin, resource_admin, regular_user
-pass: password
-
-
-localhost:8081/oauth/token?grant_type=client_credentials
-
-
-##### Header
-
-```json
-[{"key":"Content-Type","value":"application/x-www-form-urlencoded"},{"key":"Authorization","value":"Basic Y3VybF9jbGllbnQ6cGFzc3dvcmQ="}]
+Modules
+```xml
+<modules>
+    <module>entity-model</module>
+    <module>ws</module>
+    <module>services</module>
+    <module>auth-server</module>
+    <module>eureka-server</module>
+    <module>config-server</module>
+    <module>scheduler</module>
+    <module>ui-jsf</module>
+    <module>web-flux</module>
+    <module>jwt-auth-common</module>
+</modules>
 ```
 
-##### Params
-
-```json
-[{"key":"grant_type","value":"client_credentials"}]
-```
-curl_client:password  -BASE64> Y3VybF9jbGllbnQ6cGFzc3dvcmQ=
-
-
-##### calling resource service
-
-Header
-```json
-[{"key":"Authorization","value":"Bearer e995b814-712e-4241-87d2-8f5b0db401e3"}]
-```
-
+[entity-model](./entity-model/README.md)
+[ws](./ws/README.md)
+[services](./services/README.md)
+[auth-server](./auth-server/README.md)
+[eureka-server](./eureka-server/README.md)
+[config-server](./config-server/README.md)
+[scheduler](./scheduler/README.md)
+[ui-jsf](./ui-jsf/README.md)
+[web-flux](./web-flux/README.md)
+[jwt-auth-common](./entitymodel/README.md)
