@@ -4,6 +4,7 @@ import com.semihunaldi.backendbootstrap.ws.config.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -19,10 +20,14 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableResourceServer
+@Profile("oauth2")
 public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapter {
 
 	@Autowired
 	private AppProperties appProperties;
+
+	@Autowired
+	private Oauth2Properties oauth2Properties;
 
 	@Autowired
 	private DataSource dataSource;
@@ -50,10 +55,10 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 	//	@Bean
 	//	public RemoteTokenServices remoteTokenServices() {
 	//		final RemoteTokenServices tokenServices = new RemoteTokenServices();
-	//		String checkTokenUri = appProperties.getAuthServer()+"/oauth/check_token";
+	//		String checkTokenUri = oauth2Properties.getAuthServer()+"/oauth/check_token";
 	//		tokenServices.setCheckTokenEndpointUrl(checkTokenUri);
-	//		tokenServices.setClientId(appProperties.getClientId());
-	//		tokenServices.setClientSecret(appProperties.getClientSecret());
+	//		tokenServices.setClientId(oauth2Properties.getClientId());
+	//		tokenServices.setClientSecret(oauth2Properties.getClientSecret());
 	//		return tokenServices;
 	//	}
 

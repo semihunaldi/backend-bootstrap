@@ -20,6 +20,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -37,14 +38,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private Environment env;
 
 	@Autowired
-	@Qualifier("bCryptPasswordEncoder")
-	private PasswordEncoder bCryptPasswordEncoder;
-
-	@Autowired
 	private CustomJWTUserDetailsService customJWTUserDetailsService;
 
 	@Autowired
 	private JwtAuthenticationEntryPoint unauthorizedHandler;
+
+	@Bean
+	@Qualifier("bCryptPasswordEncoder")
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@Bean
 	public JwtAuthenticationFilter jwtAuthenticationFilter() {
@@ -55,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder
 				.userDetailsService(customJWTUserDetailsService)
-				.passwordEncoder(bCryptPasswordEncoder);
+				.passwordEncoder(passwordEncoder());
 	}
 
 	@Bean(BeanIds.AUTHENTICATION_MANAGER)

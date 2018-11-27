@@ -7,7 +7,7 @@ import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.S
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.exception.AppException;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.JwtTokenProvider;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.RoleRepository;
-import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserRepository;
+import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserJWTRepository;
 import com.semihunaldi.backendbootstrap.entitymodel.user.Role;
 import com.semihunaldi.backendbootstrap.entitymodel.user.RoleName;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
@@ -40,7 +40,7 @@ public class AuthController {
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	UserRepository userRepository;
+	UserJWTRepository userJWTRepository;
 
 	@Autowired
 	RoleRepository roleRepository;
@@ -70,12 +70,12 @@ public class AuthController {
 	@PostMapping("/signup")
 	@Transactional
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-		if(userRepository.existsByUserName(signUpRequest.getUsername())){
+		if(userJWTRepository.existsByUserName(signUpRequest.getUsername())){
 			return new ResponseEntity<>(new ApiResponse(false, "Username is already taken!"),
 					HttpStatus.BAD_REQUEST);
 		}
 
-		if(userRepository.existsByEmail(signUpRequest.getEmail())){
+		if(userJWTRepository.existsByEmail(signUpRequest.getEmail())){
 			return new ResponseEntity<>(new ApiResponse(false, "Email Address already in use!"),
 					HttpStatus.BAD_REQUEST);
 		}
@@ -91,7 +91,7 @@ public class AuthController {
 
 		user.setRoles(Collections.singleton(userRole));
 
-		User result = userRepository.save(user);
+		User result = userJWTRepository.save(user);
 
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentContextPath().path("/users/{username}")

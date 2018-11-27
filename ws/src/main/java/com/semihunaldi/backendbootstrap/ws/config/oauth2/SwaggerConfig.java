@@ -1,9 +1,11 @@
-package com.semihunaldi.backendbootstrap.ws.config;
+package com.semihunaldi.backendbootstrap.ws.config.oauth2;
 
 import com.google.common.base.Predicate;
+import com.semihunaldi.backendbootstrap.ws.config.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.AuthorizationScope;
@@ -31,10 +33,14 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @EnableSwagger2
 @Configuration
+@Profile("oauth2")
 public class SwaggerConfig {
 
 	@Autowired
 	private AppProperties appProperties;
+
+	@Autowired
+	private Oauth2Properties oauth2Properties;
 
 	@Bean
 	public Docket postsApi() {
@@ -67,7 +73,7 @@ public class SwaggerConfig {
 		authorizationScopeList.add(new AuthorizationScope("write", "access all"));
 
 		List<GrantType> grantTypes = newArrayList();
-		GrantType creGrant = new ClientCredentialsGrant(appProperties.getAuthServer() + "/oauth/token");
+		GrantType creGrant = new ClientCredentialsGrant(oauth2Properties.getAuthServer() + "/oauth/token");
 
 		grantTypes.add(creGrant);
 
@@ -90,6 +96,6 @@ public class SwaggerConfig {
 	@Bean
 	public SecurityConfiguration securityInfo() {
 		//		new SecurityConfiguration(appProperties.getClientId(), appProperties.getClientSecret(), "", "", "", ApiKeyVehicle.HEADER, "Authorization", ": Bearer");
-		return new SecurityConfiguration(appProperties.getClientId(), appProperties.getClientSecret(), "", "", ": Bearer", null, true);
+		return new SecurityConfiguration(oauth2Properties.getClientId(), oauth2Properties.getClientSecret(), "", "", ": Bearer", null, true);
 	}
 }

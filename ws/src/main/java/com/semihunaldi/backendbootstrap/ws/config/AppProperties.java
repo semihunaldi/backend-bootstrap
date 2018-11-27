@@ -16,7 +16,4 @@ public class AppProperties {
 	private String developerUrl;
 	private String developerMail;
 
-	private String authServer;
-	private String clientId;
-	private String clientSecret;
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 @Profile("jwt")
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserJWTRepository extends JpaRepository<User, String> {
     Optional<User> findByEmail(String email);
 
     Optional<User> findByUserNameOrEmail(String username, String email);

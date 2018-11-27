@@ -2,4 +2,4 @@ spring:
   application:
     name: backend-bootstrap
   profiles:
-    active: default,dev
+    active: default,dev,jwt

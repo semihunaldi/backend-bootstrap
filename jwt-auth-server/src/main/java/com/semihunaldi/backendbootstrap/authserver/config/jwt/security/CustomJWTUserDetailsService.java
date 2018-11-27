@@ -15,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomJWTUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	UserRepository userRepository;
+	UserJWTRepository userJWTRepository;
 
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String usernameOrEmail)
 			throws UsernameNotFoundException {
 		// Let people login with either username or email
-		User user = userRepository.findByUserNameOrEmail(usernameOrEmail, usernameOrEmail)
+		User user = userJWTRepository.findByUserNameOrEmail(usernameOrEmail, usernameOrEmail)
 				.orElseThrow(() ->
 						new UsernameNotFoundException("User not found with username or email : " + usernameOrEmail)
 				);
@@ -32,7 +32,7 @@ public class CustomJWTUserDetailsService implements UserDetailsService {
 
 	@Transactional
 	public UserDetails loadUserById(String id) {
-		User user = userRepository.findById(id).orElseThrow(
+		User user = userJWTRepository.findById(id).orElseThrow(
 				() -> new ResourceNotFoundException("User", "id", id)
 		);
 

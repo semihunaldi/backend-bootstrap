@@ -60,3 +60,5 @@ app:
     authServer: http://localhost:8081
     clientId: curl_client
     clientSecret: password
+    jwtSecret: JWTSuperSecretKey
+    jwtExpirationInMs: 604800000

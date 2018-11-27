@@ -4,8 +4,8 @@ import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.U
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.UserProfile;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.UserSummary;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.exception.ResourceNotFoundException;
+import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserJWTRepository;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserPrincipal;
-import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserRepository;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserJWTRepository userJWTRepository;
 
     @GetMapping("/user/me")
     @PreAuthorize("hasRole('USER')")
@@ -34,19 +34,19 @@ public class UserController {
 
     @GetMapping("/user/checkUsernameAvailability")
     public UserIdentityAvailability checkUsernameAvailability(@RequestParam(value = "username") String username) {
-        Boolean isAvailable = !userRepository.existsByUserName(username);
+        Boolean isAvailable = !userJWTRepository.existsByUserName(username);
         return new UserIdentityAvailability(isAvailable);
     }
 
     @GetMapping("/user/checkEmailAvailability")
     public UserIdentityAvailability checkEmailAvailability(@RequestParam(value = "email") String email) {
-        Boolean isAvailable = !userRepository.existsByEmail(email);
+        Boolean isAvailable = !userJWTRepository.existsByEmail(email);
         return new UserIdentityAvailability(isAvailable);
     }
 
     @GetMapping("/users/{username}")
     public UserProfile getUserProfile(@PathVariable(value = "username") String username) {
-        User user = userRepository.findByUserName(username)
+        User user = userJWTRepository.findByUserName(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
         return new UserProfile(user.getId(), user.getUserName(), user.getName(), user.getCreateTime());
     }
