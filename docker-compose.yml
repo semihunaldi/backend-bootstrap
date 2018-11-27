@@ -63,7 +63,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - SPRING_PROFILES_ACTIVE=default,docker-dev
+      - SPRING_PROFILES_ACTIVE=default,docker-dev,jwt
 #
 
   scheduler:
@@ -91,7 +91,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_PROFILES_ACTIVE=default,docker-dev
+      - SPRING_PROFILES_ACTIVE=default,docker-dev,jwt
 #
 
 

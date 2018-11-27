@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:9.5.15-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: backend-bootstrap-user
+      POSTGRES_DB: backendbootstrapdb
+    volumes:
+      - ./postgresDbDir:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+#
