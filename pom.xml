@@ -34,7 +34,7 @@
         <module>scheduler</module>
         <module>ui-jsf</module>
         <module>web-flux</module>
-        <module>jwt-auth-server</module>
+        <module>jwt-auth-common</module>
     </modules>
 
     <packaging>pom</packaging>

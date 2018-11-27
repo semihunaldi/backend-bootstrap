@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.semihunaldi.backendbootstrap</groupId>
-            <artifactId>jwt-auth-server</artifactId>
+            <artifactId>jwt-auth-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

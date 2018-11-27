@@ -34,6 +34,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Profile("jwt")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	private static final String[] AUTH_WHITELIST = {
+			// -- swagger ui
+			"/swagger-resources/**",
+			"/swagger-ui.html",
+			"/v2/api-docs",
+			"/webjars/**",
+			"/csrf"
+	};
+
+
 	@Autowired
 	private Environment env;
 
@@ -72,6 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		if(Lists.newArrayList(env.getActiveProfiles()).contains("dev")){
 			web.ignoring().antMatchers("/h2/**");
 		}
+		web.ignoring().antMatchers(AUTH_WHITELIST);
 	}
 
 	@Override

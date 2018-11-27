@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jwt-auth-server</artifactId>
+    <artifactId>jwt-auth-common</artifactId>
 
     <dependencies>
         <dependency>

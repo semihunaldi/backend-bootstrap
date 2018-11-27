@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.ws.config.oauth2;
+package com.semihunaldi.backendbootstrap.ws.config.jwt;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,10 +10,8 @@ import org.springframework.context.annotation.Profile;
 
 @ConfigurationProperties(prefix = "app.properties")
 @Data
-@Profile("oauth2")
-public class Oauth2Properties {
+@Profile("jwt")
+public class JWTAuthProperties {
 
 	private String authServer;
-	private String clientId;
-	private String clientSecret;
 }
