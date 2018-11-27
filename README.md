@@ -10,6 +10,17 @@
 </parent>
 ```
 
+```text
+Project Running Order
+
+0. config-server (if used)
+1. eureka-server
+2. auth-server
+3. ws
+4. scheduler (only dependent to db's order doesn't matter)
+
+```
+
 [docker-compose.yml can give you a quick look to project structure.](./docker-compose.yml)<br/>
 
 Modules
