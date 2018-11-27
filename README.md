@@ -48,4 +48,4 @@ Modules
 [scheduler](./scheduler/README.md)<br/>
 [ui-jsf](./ui-jsf/README.md)<br/>
 [web-flux](./web-flux/README.md)<br/>
-[jwt-auth-common](./entitymodel/README.md)<br/>
+[jwt-auth-common](./jwt-auth-common/README.md)<br/>
