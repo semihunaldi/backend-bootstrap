@@ -1,6 +1,7 @@
-package com.semihunaldi.backendbootstrap.authserver.controller;
+package com.semihunaldi.backendbootstrap.authserver.config.oauth2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.approval.Approval;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
  * Created by semihunaldi on 21.11.2018
  */
 @Controller
+@Profile("oauth2")
 public class LoginController {
 
 	@Autowired

@@ -1,6 +1,7 @@
-package com.semihunaldi.backendbootstrap.authserver.model;
+package com.semihunaldi.backendbootstrap.authserver.config.oauth2.model;
 
 import lombok.Data;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import java.io.Serializable;
  */
 @Entity
 @Data
+@Profile("oauth2")
 public class Authority implements GrantedAuthority, Serializable {
 
 	private static final long serialVersionUID = 6526810033450468086L;

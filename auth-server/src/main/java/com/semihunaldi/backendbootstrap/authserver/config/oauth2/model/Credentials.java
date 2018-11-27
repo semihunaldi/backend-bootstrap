@@ -1,6 +1,7 @@
-package com.semihunaldi.backendbootstrap.authserver.model;
+package com.semihunaldi.backendbootstrap.authserver.config.oauth2.model;
 
 import lombok.Data;
+import org.springframework.context.annotation.Profile;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +21,7 @@ import java.util.List;
 @Entity
 @Table(name = "credentials")
 @Data
+@Profile("oauth2")
 public class Credentials implements Serializable {
 
 	private static final long serialVersionUID = 3734072263583197829L;

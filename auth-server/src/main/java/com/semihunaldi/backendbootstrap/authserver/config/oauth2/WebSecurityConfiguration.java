@@ -32,6 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	@Override
+	@Profile("oauth2")
 	public UserDetailsService userDetailsServiceBean() {
 		return new CustomJdbcUserDetailsService();
 	}

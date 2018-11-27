@@ -1,8 +1,9 @@
-package com.semihunaldi.backendbootstrap.authserver.controller;
+package com.semihunaldi.backendbootstrap.authserver.config.oauth2.controller;
 
 import com.semihunaldi.backendbootstrap.authserver.config.oauth2.EditorAuthorityProperty;
 import com.semihunaldi.backendbootstrap.authserver.config.oauth2.EditorSplitCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +28,7 @@ import java.util.Set;
  */
 @Controller
 @RequestMapping("clients")
+@Profile("oauth2")
 public class ClientsController {
 
 	@Autowired

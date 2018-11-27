@@ -34,3 +34,8 @@ eureka:
     console:
       enabled: true
       path: /h2
+
+app:
+  properties:
+    jwtSecret: JWTSuperSecretKey
+    jwtExpirationInMs: 604800000

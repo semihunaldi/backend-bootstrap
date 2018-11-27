@@ -1,8 +1,9 @@
 package com.semihunaldi.backendbootstrap.authserver.config.oauth2;
 
-import com.semihunaldi.backendbootstrap.authserver.model.Credentials;
-import com.semihunaldi.backendbootstrap.authserver.repository.CredentialsRepository;
+import com.semihunaldi.backendbootstrap.authserver.config.oauth2.model.Credentials;
+import com.semihunaldi.backendbootstrap.authserver.config.oauth2.repository.CredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 /**
  * Created by semihunaldi on 21.11.2018
  */
+@Profile("oauth2")
 public class CustomJdbcUserDetailsService implements UserDetailsService {
 
 	@Autowired

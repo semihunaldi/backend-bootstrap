@@ -1,5 +1,6 @@
-package com.semihunaldi.backendbootstrap.ws.config;
+package com.semihunaldi.backendbootstrap.ws.config.oauth2;
 
+import com.semihunaldi.backendbootstrap.ws.config.AppProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
