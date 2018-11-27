@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>all-themes</artifactId>
-            <version>1.0.10</version>
+            <version>${primefaces-all-themes.version}</version>
         </dependency>
 
         <dependency>
@@ -42,10 +42,6 @@
         </dependency>
 
     </dependencies>
-
-    <properties>
-        <commons-fileupload.version>1.3.3</commons-fileupload.version>
-    </properties>
 
     <repositories>
         <repository>

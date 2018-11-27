@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: backend-bootstrap-web-flux
+  profiles:
+    active: default,dev

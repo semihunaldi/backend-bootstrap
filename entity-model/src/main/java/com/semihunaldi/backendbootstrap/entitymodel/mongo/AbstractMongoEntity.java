@@ -1,6 +1,7 @@
 package com.semihunaldi.backendbootstrap.entitymodel.mongo;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  */
 
 @Data
+@EqualsAndHashCode(of = "id")
 public abstract class AbstractMongoEntity implements Serializable {
 
 	@Id

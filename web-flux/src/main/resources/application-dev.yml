@@ -1,0 +1,9 @@
+server:
+  port: 8082
+
+
+data:
+  mongodb:
+    database: backendbootstrapdb
+    host: localhost
+    port: 27017
