@@ -1,15 +1,15 @@
 server:
   port: 8082
 
-
-data:
-  mongodb:
-    authentication-database: admin
-    username: backend-bootstrap-user
-    password: password
-    database: backendbootstrapdb
-    host: mongo
-    port: 27017
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: backend-bootstrap-user
+      password: password
+      database: backendbootstrapdb
+      host: mongo
+      port: 27017
 
 app:
   properties:
