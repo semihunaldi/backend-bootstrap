@@ -1,11 +1,11 @@
-#backend-bootstrap
+# backend-bootstrap
 
-###Backend Bootstrap Project with Spring Boot
-
-
+### Backend Bootstrap Project with Spring Boot
 
 
-#Security oauth2
+
+
+# Security oauth2
 users: oauth_admin, resource_admin, regular_user
 pass: password
 
@@ -13,13 +13,13 @@ pass: password
 localhost:8081/oauth/token?grant_type=client_credentials
 
 
-#####Header
+##### Header
 
 ```json
 [{"key":"Content-Type","value":"application/x-www-form-urlencoded"},{"key":"Authorization","value":"Basic Y3VybF9jbGllbnQ6cGFzc3dvcmQ="}]
 ```
 
-#####Params
+##### Params
 
 ```json
 [{"key":"grant_type","value":"client_credentials"}]
@@ -27,7 +27,7 @@ localhost:8081/oauth/token?grant_type=client_credentials
 curl_client:password  -BASE64> Y3VybF9jbGllbnQ6cGFzc3dvcmQ=
 
 
-#####calling resource service
+##### calling resource service
 
 Header
 ```json
