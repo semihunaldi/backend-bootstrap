@@ -19,13 +19,13 @@ Modules
 </modules>
 ```
 
-[entity-model](./entity-model/README.md)
-[ws](./ws/README.md)
-[services](./services/README.md)
-[auth-server](./auth-server/README.md)
-[eureka-server](./eureka-server/README.md)
-[config-server](./config-server/README.md)
-[scheduler](./scheduler/README.md)
-[ui-jsf](./ui-jsf/README.md)
-[web-flux](./web-flux/README.md)
-[jwt-auth-common](./entitymodel/README.md)
+[entity-model](./entity-model/README.md)<br/>
+[ws](./ws/README.md)<br/>
+[services](./services/README.md)<br/>
+[auth-server](./auth-server/README.md)<br/>
+[eureka-server](./eureka-server/README.md)<br/>
+[config-server](./config-server/README.md)<br/>
+[scheduler](./scheduler/README.md)<br/>
+[ui-jsf](./ui-jsf/README.md)<br/>
+[web-flux](./web-flux/README.md)<br/>
+[jwt-auth-common](./entitymodel/README.md)<br/>
