@@ -18,9 +18,7 @@ public class CreateUserDTO extends BaseResult {
 
 	private String userId;
 
-	private String firstName;
-
-	private String lastName;
+	private String name;
 
 	private String userName;
 
@@ -65,8 +63,7 @@ public class CreateUserDTO extends BaseResult {
 	}
 
 	private static void setUserCommonFields(User user, CreateUserDTO createUserDTO) {
-		user.setFirstName(createUserDTO.getFirstName());
-		user.setLastName(createUserDTO.getLastName());
+		user.setName(createUserDTO.getName());
 		user.setUserName(createUserDTO.getUserName());
 		user.setEmail(createUserDTO.getEmail());
 		user.setMobilePhone(createUserDTO.getMobilePhone());
@@ -85,8 +82,7 @@ public class CreateUserDTO extends BaseResult {
 
 	public static CreateUserDTO createCreateUserDTO(User user) {
 		CreateUserDTO createUserDTO = new CreateUserDTO();
-		createUserDTO.setFirstName(user.getFirstName());
-		createUserDTO.setLastName(user.getLastName());
+		createUserDTO.setName(user.getName());
 		createUserDTO.setUserName(user.getUserName());
 		createUserDTO.setEmail(user.getEmail());
 		createUserDTO.setMobilePhone(user.getMobilePhone());

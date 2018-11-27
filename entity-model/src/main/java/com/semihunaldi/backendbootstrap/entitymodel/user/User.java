@@ -1,14 +1,21 @@
 package com.semihunaldi.backendbootstrap.entitymodel.user;
 
+import com.google.common.collect.Sets;
 import com.semihunaldi.backendbootstrap.entitymodel.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.util.Set;
 
 /**
  * Created by semihunaldi on 9.11.2018
@@ -24,11 +31,10 @@ import javax.persistence.UniqueConstraint;
 @DynamicUpdate
 @EqualsAndHashCode(callSuper = true, of = "")
 @Where(clause = "DELETED = '0'")
+@NoArgsConstructor
 public class User extends AbstractEntity {
 
-	private String firstName;
-
-	private String lastName;
+	private String name;
 
 	private String userName;
 
@@ -45,4 +51,19 @@ public class User extends AbstractEntity {
 	private String fcmTokenId;
 
 	private Integer age;
+
+	private String password;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_roles",
+	           joinColumns = @JoinColumn(name = "user_id"),
+	           inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = Sets.newHashSet();
+
+	public User(String name, String username, String email, String password) {
+		this.name = name;
+		this.userName = username;
+		this.email = email;
+		this.password = password;
+	}
 }

@@ -1,0 +1,64 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/backendbootstrapdb
+    username: backend-bootstrap-user
+    password: password
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: never
+#    schema: classpath:/db/sql/schema.sql
+#    data: classpath:/db/sql/import.sql
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+          lob:
+            non_contextual_creation: true
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: none
+              create-target: create.sql
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+
+  data:
+    mongodb:
+      authentication-database: admin
+      username: backend-bootstrap-user
+      password: password
+      database: backendbootstrapdb
+      host: mongo
+      port: 27017
+
+  h2:
+    console:
+      enabled: false
+      path: /h2
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://eureka-server:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+app:
+  properties:
+    resourceId: ${RESOURCE_ID:backend-bootstrap-api}
+    developerName: Semih Unaldi
+    developerUrl: https://www.semihunaldi.com
+    developerMail: semihunaldi@gmail.com
+    authServer: http://auth-server:8081
+    clientId: curl_client
+    clientSecret: password

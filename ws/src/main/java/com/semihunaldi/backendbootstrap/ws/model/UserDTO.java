@@ -15,9 +15,7 @@ public class UserDTO extends BaseResult {
 
 	private String id;
 
-	private String firstName;
-
-	private String lastName;
+	private String name;
 
 	private String userName;
 
@@ -43,8 +41,7 @@ public class UserDTO extends BaseResult {
 	public static UserDTO create(User user) {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setId(user.getId());
-		userDTO.setFirstName(user.getFirstName());
-		userDTO.setLastName(user.getLastName());
+		userDTO.setName(user.getName());
 		userDTO.setUserName(user.getUserName());
 		userDTO.setEmail(user.getEmail());
 		userDTO.setTwitterId(user.getTwitterId());
