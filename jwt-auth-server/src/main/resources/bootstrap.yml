@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: backend-bootstrap-jwt-auth-server
-  profiles:
-    active: default,dev
