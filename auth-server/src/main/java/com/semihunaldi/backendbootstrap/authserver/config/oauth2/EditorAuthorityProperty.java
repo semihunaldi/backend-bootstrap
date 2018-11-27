@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.authserver.config;
+package com.semihunaldi.backendbootstrap.authserver.config.oauth2;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

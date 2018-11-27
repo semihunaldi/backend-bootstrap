@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.authserver.config;
+package com.semihunaldi.backendbootstrap.authserver.config.oauth2;
 
 import com.semihunaldi.backendbootstrap.authserver.model.Credentials;
 import com.semihunaldi.backendbootstrap.authserver.repository.CredentialsRepository;

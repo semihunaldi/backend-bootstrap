@@ -1,7 +1,7 @@
 package com.semihunaldi.backendbootstrap.authserver.controller;
 
-import com.semihunaldi.backendbootstrap.authserver.config.EditorAuthorityProperty;
-import com.semihunaldi.backendbootstrap.authserver.config.EditorSplitCollection;
+import com.semihunaldi.backendbootstrap.authserver.config.oauth2.EditorAuthorityProperty;
+import com.semihunaldi.backendbootstrap.authserver.config.oauth2.EditorSplitCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
