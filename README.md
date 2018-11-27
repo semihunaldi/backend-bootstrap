@@ -10,6 +10,7 @@
 </parent>
 ```
 
+[docker-compose.yml can give you a quick look to project structure.](./docker-compose.yml)<br/>
 
 Modules
 ```xml
