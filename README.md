@@ -13,11 +13,11 @@
 ```text
 Project Running Order
 
-0. config-server (if used)
+0. config-server (if not used properties will be used from classpath)
 1. eureka-server
 2. auth-server
 3. ws
-4. scheduler (only dependent to db's order doesn't matter)
+4. scheduler (only dependent to db's, order doesn't matter)
 
 ```
 
