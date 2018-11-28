@@ -1,7 +1,7 @@
 package com.semihunaldi.backendbootstrap.services.user.impl;
 
-import com.semihunaldi.backendbootstrap.entitymodel.enums.SpecialExceptions;
-import com.semihunaldi.backendbootstrap.entitymodel.exceptions.UserException;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UserExistsException;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UserNotFoundException;
 import com.semihunaldi.backendbootstrap.entitymodel.mongo.TestDocument;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import com.semihunaldi.backendbootstrap.services.BaseServiceImpl;
@@ -77,9 +77,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Transactional
 	public User saveUser(User user) {
 		try{
-			return this.userRepository.save(user);
+			return this.userRepository.saveAndFlush(user);
 		} catch(DataIntegrityViolationException e){
-			throw new UserException(SpecialExceptions.USER_EXISTS_EXCEPTION);
+			throw new UserExistsException(e);
 		}
 	}
 
@@ -87,6 +87,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Transactional
 	public void deleteUser(String userId) {
 		User user = this.userRepository.findUserById(userId);
+		if(user == null){
+			throw new UserNotFoundException();
+		}
 		adjustEntityForDeletion(user);
 		this.userRepository.save(user);
 	}

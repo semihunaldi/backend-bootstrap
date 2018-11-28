@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
 import java.util.Set;
 
 /**
@@ -38,6 +39,7 @@ public class User extends AbstractEntity {
 
 	private String userName;
 
+	@Email
 	private String email;
 
 	private String mobilePhone;

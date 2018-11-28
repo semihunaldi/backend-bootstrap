@@ -1,6 +1,5 @@
 package com.semihunaldi.backendbootstrap.ws.model;
 
-import com.semihunaldi.backendbootstrap.entitymodel.enums.SpecialExceptions;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
@@ -13,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-@ApiModel(value="CreateUserDTO class", description="represents an object request for User")
+@ApiModel(value = "CreateUserDTO class", description = "represents an object request for User")
 public class CreateUserDTO extends BaseResult {
 
 	private String userId;
@@ -37,14 +36,6 @@ public class CreateUserDTO extends BaseResult {
 	private Integer age;
 
 	private String ipAddress;
-
-	public CreateUserDTO(Integer errorCode, String errorDescription) {
-		super(errorCode, errorDescription);
-	}
-
-	public CreateUserDTO(SpecialExceptions specialExceptions) {
-		super(specialExceptions.getErrorCode(), specialExceptions.getErrorDescription());
-	}
 
 	public CreateUserDTO() {
 	}

@@ -1,6 +1,5 @@
 package com.semihunaldi.backendbootstrap.ws.model;
 
-import com.semihunaldi.backendbootstrap.entitymodel.enums.SpecialExceptions;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,14 +25,6 @@ public class UserDTO extends BaseResult {
 	private String twitterId;
 
 	private String instagramId;
-
-	public UserDTO(Integer errorCode, String errorDescription) {
-		super(errorCode, errorDescription);
-	}
-
-	public UserDTO(SpecialExceptions specialExceptions) {
-		super(specialExceptions.getErrorCode(), specialExceptions.getErrorDescription());
-	}
 
 	public UserDTO() {
 	}

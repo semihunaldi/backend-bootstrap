@@ -9,15 +9,18 @@ import lombok.Data;
 @Data
 public class BaseResult {
 
+	private ErrorMessage errorMessage = null;
+
 	private Integer errorCode = 0;
 
 	private String errorDescription = "Success";
 
-	public BaseResult(Integer errorCode, String errorDescription) {
-		this.errorCode = errorCode;
-		this.errorDescription = errorDescription;
+	public BaseResult() {
 	}
 
-	public BaseResult() {
+	public BaseResult(int errorCode, String errorDescription, ErrorMessage errorMessage) {
+		this.errorCode = errorCode;
+		this.errorMessage = errorMessage;
+		this.errorDescription = errorDescription;
 	}
 }
