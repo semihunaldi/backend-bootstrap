@@ -42,7 +42,7 @@ public class FirebaseMessagingServiceImpl extends BaseServiceImpl implements Fir
 					.setToken(registrationToken)
 					.setTopic(fcmMessage.getTopic())
 					.build();
-			// Send a message toToken the device corresponding toToken the provided
+			// Send a message to the device corresponding to the provided
 			// registration token.
 			String response = FirebaseMessaging.getInstance().send(message);
 			// Response is a message ID string.

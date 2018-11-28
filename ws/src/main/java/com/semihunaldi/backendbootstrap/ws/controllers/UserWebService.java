@@ -50,4 +50,8 @@ public interface UserWebService {
 	@RequestMapping(value = "/updateUser", method = {RequestMethod.POST})
 	@ResponseStatus(value = HttpStatus.OK)
 	CreateUserDTO updateUser(@RequestBody CreateUserDTO createUserDTO);
+
+	@RequestMapping(value = "/deleteUser", method = {RequestMethod.DELETE})
+	@ResponseStatus(value = HttpStatus.OK)
+	void deleteUser(@RequestParam String userId);
 }

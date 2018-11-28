@@ -170,4 +170,9 @@ public class UserWebServiceController extends BaseRestController implements User
 			return new CreateUserDTO(SpecialExceptions.ERROR);
 		}
 	}
+
+	@Override
+	public void deleteUser(String userId) {
+		userService.deleteUser(userId);
+	}
 }

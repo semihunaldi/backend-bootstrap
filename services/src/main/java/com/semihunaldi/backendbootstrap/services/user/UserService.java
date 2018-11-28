@@ -3,6 +3,7 @@ package com.semihunaldi.backendbootstrap.services.user;
 import com.semihunaldi.backendbootstrap.entitymodel.mongo.TestDocument;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import com.semihunaldi.backendbootstrap.services.BaseService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by semihunaldi on 9.11.2018
@@ -24,4 +25,6 @@ public interface UserService extends BaseService {
 	User findUserByUserName(String userName);
 
 	User saveUser(User user);
+	@Transactional
+	void deleteUser(String userId);
 }

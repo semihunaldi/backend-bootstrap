@@ -35,7 +35,7 @@ public class BaseServiceImpl {
 
 	protected void adjustEntityForDeletion(AbstractEntity entity) {
 		checkNotNull(entity, "entity is null");
-		checkArgument(StringUtils.isNotBlank(entity.getId()), "entry must have been saved before attempting toToken delete");
+		checkArgument(StringUtils.isNotBlank(entity.getId()), "entry must have been saved before attempting to delete");
 		entity.setDeleted(UUID.randomUUID().toString());
 	}
 

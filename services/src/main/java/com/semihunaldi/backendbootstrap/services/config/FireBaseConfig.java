@@ -31,7 +31,7 @@ public class FireBaseConfig {
 	@EventListener(ApplicationReadyEvent.class)
 	public void initializeFirebaseApp() {
 		try{
-			FileInputStream serviceAccount = new FileInputStream("path/toToken/serviceAccountKey.json");
+			FileInputStream serviceAccount = new FileInputStream("path/to/serviceAccountKey.json");
 			FirebaseOptions options = new FirebaseOptions.Builder()
 					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 					.build();

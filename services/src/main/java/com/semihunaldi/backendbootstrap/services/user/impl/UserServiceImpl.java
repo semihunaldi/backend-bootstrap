@@ -82,4 +82,12 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			throw new UserException(SpecialExceptions.USER_EXISTS_EXCEPTION);
 		}
 	}
+
+	@Override
+	@Transactional
+	public void deleteUser(String userId) {
+		User user = this.userRepository.findUserById(userId);
+		adjustEntityForDeletion(user);
+		this.userRepository.save(user);
+	}
 }
