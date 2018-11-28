@@ -46,10 +46,9 @@ public class FirebaseMessagingServiceImpl extends BaseServiceImpl implements Fir
 			// registration token.
 			String response = FirebaseMessaging.getInstance().send(message);
 			// Response is a message ID string.
-			System.out.println("Successfully sent message: " + response);
+			logger.info("fcm message sent with id : " + response + " To User with token : " + registrationToken);
 		} catch(FirebaseMessagingException e){
-			//TODO: handle this error
-			e.printStackTrace();
+			logger.error("FirebaseMessagingServiceImpl.sendMessage error",e);
 		}
 	}
 }
