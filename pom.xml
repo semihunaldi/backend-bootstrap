@@ -87,6 +87,12 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -121,6 +127,7 @@
 
         <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
         <jjwt.version>0.9.0</jjwt.version>
+        <modelmapper.version>2.3.2</modelmapper.version>
     </properties>
 
     <repositories>
