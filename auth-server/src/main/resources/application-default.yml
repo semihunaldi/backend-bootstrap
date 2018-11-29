@@ -2,5 +2,6 @@ spring:
   jpa:
     properties:
       hibernate:
-        ejb:
+        session_factory:
           interceptor: com.semihunaldi.backendbootstrap.entitymodel.interceptor.EntityCommonFieldInterceptor
+    open-in-view: true
