@@ -22,6 +22,11 @@
             <artifactId>jwt-auth-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.semihunaldi.backendbootstrap</groupId>
+            <artifactId>exception-handling</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>

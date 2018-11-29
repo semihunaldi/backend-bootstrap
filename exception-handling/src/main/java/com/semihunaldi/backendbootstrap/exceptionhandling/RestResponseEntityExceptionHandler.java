@@ -1,12 +1,14 @@
-package com.semihunaldi.backendbootstrap.ws.config;
+package com.semihunaldi.backendbootstrap.exceptionhandling;
 
 import com.google.common.collect.Lists;
 import com.semihunaldi.backendbootstrap.entitymodel.exceptions.BaseException;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.AppException;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.EmailAddressInUseException;
 import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UnknownException;
 import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UserExistsException;
 import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UserNotFoundException;
-import com.semihunaldi.backendbootstrap.ws.model.BaseResult;
-import com.semihunaldi.backendbootstrap.ws.model.ErrorMessage;
+import com.semihunaldi.backendbootstrap.exceptionhandling.model.BaseResult;
+import com.semihunaldi.backendbootstrap.exceptionhandling.model.ErrorMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +52,18 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 	@ExceptionHandler({UnknownException.class})
 	public ResponseEntity<Object> handleUserExistsException(final UnknownException ex, final WebRequest request) {
+		BaseResult baseResult = prepareBaseResult(ex, request);
+		return handleExceptionInternal(ex, baseResult, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+	}
+
+	@ExceptionHandler({AppException.class})
+	public ResponseEntity<Object> handleUserExistsException(final AppException ex, final WebRequest request) {
+		BaseResult baseResult = prepareBaseResult(ex, request);
+		return handleExceptionInternal(ex, baseResult, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+	}
+
+	@ExceptionHandler({EmailAddressInUseException.class})
+	public ResponseEntity<Object> handleUserExistsException(final EmailAddressInUseException ex, final WebRequest request) {
 		BaseResult baseResult = prepareBaseResult(ex, request);
 		return handleExceptionInternal(ex, baseResult, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}

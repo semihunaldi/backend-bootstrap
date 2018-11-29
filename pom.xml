@@ -35,6 +35,7 @@
         <module>ui-jsf</module>
         <module>web-flux</module>
         <module>jwt-auth-common</module>
+        <module>exception-handling</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,6 +1,7 @@
 package com.semihunaldi.backendbootstrap.ws.model;
 
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
+import com.semihunaldi.backendbootstrap.exceptionhandling.model.BaseResult;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

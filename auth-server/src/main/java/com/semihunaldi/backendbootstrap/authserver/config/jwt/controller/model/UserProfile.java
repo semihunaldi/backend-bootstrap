@@ -1,5 +1,6 @@
 package com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model;
 
+import com.semihunaldi.backendbootstrap.exceptionhandling.model.BaseResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserProfile {
+public class UserProfile extends BaseResult {
 
 	private String id;
 	private String name;

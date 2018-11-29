@@ -4,16 +4,17 @@ import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.A
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.JwtAuthenticationResponse;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.LoginRequest;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.SignUpRequest;
-import com.semihunaldi.backendbootstrap.authserver.config.jwt.exception.AppException;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.JwtTokenProvider;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.RoleRepository;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserJWTRepository;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.AppException;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.EmailAddressInUseException;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UserExistsException;
 import com.semihunaldi.backendbootstrap.entitymodel.user.Role;
 import com.semihunaldi.backendbootstrap.entitymodel.user.RoleName;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -68,10 +69,10 @@ public class AuthController {
 	@Transactional
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if(userJWTRepository.existsByUserName(signUpRequest.getUserName())){
-			return new ResponseEntity<>(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
+			throw new UserExistsException();
 		}
 		if(userJWTRepository.existsByEmail(signUpRequest.getEmail())){
-			return new ResponseEntity<>(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
+			throw new EmailAddressInUseException();
 		}
 		Role userRole = roleRepository.findByName(RoleName.ROLE_USER).orElseThrow(() -> new AppException("User Role not set."));
 		User user = User.builder()

@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.ws.model;
+package com.semihunaldi.backendbootstrap.exceptionhandling.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

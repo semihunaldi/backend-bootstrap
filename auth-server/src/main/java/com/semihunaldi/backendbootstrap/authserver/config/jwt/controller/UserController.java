@@ -3,9 +3,9 @@ package com.semihunaldi.backendbootstrap.authserver.config.jwt.controller;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.UserIdentityAvailability;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.UserProfile;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.UserSummary;
-import com.semihunaldi.backendbootstrap.authserver.config.jwt.exception.ResourceNotFoundException;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserJWTRepository;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserPrincipal;
+import com.semihunaldi.backendbootstrap.entitymodel.exceptions.user.UserNotFoundException;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -45,7 +45,7 @@ public class UserController {
 
     @GetMapping("/users/{userName}")
     public UserProfile getUserProfile(@PathVariable(value = "userName") String userName) {
-        User user = userJWTRepository.findByUserName(userName).orElseThrow(() -> new ResourceNotFoundException("User", "userName", userName));
+        User user = userJWTRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
         return UserProfile.builder()
                 .id(user.getId())
                 .name(user.getName())

@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Profile("jwt")
 @EnableJpaRepositories(basePackages = "com.semihunaldi.backendbootstrap.authserver.*")
 @EntityScan(basePackages = "com.semihunaldi.backendbootstrap.entitymodel")
-@ComponentScan(basePackages = "com.semihunaldi.backendbootstrap")
+@ComponentScan(basePackages = "com.semihunaldi.backendbootstrap.*")
 public class JWTConfiguration {
 
 }
