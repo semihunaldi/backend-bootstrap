@@ -36,6 +36,7 @@ Modules
     <module>ui-jsf</module>
     <module>web-flux</module>
     <module>jwt-auth-common</module>
+    <module>exception-handling</module>
 </modules>
 ```
 
@@ -49,3 +50,4 @@ Modules
 [ui-jsf](./ui-jsf/README.md)<br/>
 [web-flux](./web-flux/README.md)<br/>
 [jwt-auth-common](./jwt-auth-common/README.md)<br/>
+[exception-handling](./exception-handling/README.md)<br/>
