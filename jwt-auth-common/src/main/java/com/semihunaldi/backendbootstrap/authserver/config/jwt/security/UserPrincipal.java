@@ -3,16 +3,17 @@ package com.semihunaldi.backendbootstrap.authserver.config.jwt.security;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.semihunaldi.backendbootstrap.entitymodel.user.User;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Data
+@EqualsAndHashCode(of = "id")
 public class UserPrincipal implements UserDetails {
 
 	private String id;
@@ -86,21 +87,5 @@ public class UserPrincipal implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if(this == o)
-			return true;
-		if(o == null || getClass() != o.getClass())
-			return false;
-		UserPrincipal that = (UserPrincipal) o;
-		return Objects.equals(id, that.id);
-	}
-
-	@Override
-	public int hashCode() {
-
-		return Objects.hash(id);
 	}
 }

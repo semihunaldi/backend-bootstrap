@@ -35,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 String userId = tokenProvider.getUserIdFromJWT(jwt);
 
                 /*
-                    Note that you could also encode the user's username and roles inside JWT claims
+                    Note that you could also encode the user's userName and roles inside JWT claims
                     and create the UserDetails object by parsing those claims from the JWT.
                     That would avoid the following database hit. It's completely up to you.
                  */

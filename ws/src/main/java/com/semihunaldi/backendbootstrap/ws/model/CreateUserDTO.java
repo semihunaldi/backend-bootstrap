@@ -6,6 +6,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
+
 /**
  * Created by semihunaldi on 9.11.2018
  */
@@ -17,10 +23,17 @@ public class CreateUserDTO extends BaseResult {
 
 	private String userId;
 
+	@NotBlank
+	@Size(min = 4, max = 40)
 	private String name;
 
+	@NotBlank
+	@Size(min = 3, max = 15)
 	private String userName;
 
+	@NotBlank
+	@Size(max = 40)
+	@Email
 	private String email;
 
 	private String mobilePhone;
@@ -33,7 +46,8 @@ public class CreateUserDTO extends BaseResult {
 
 	private String fcmTokenId;
 
-	private Integer age;
+	@NotNull
+	private Date birthDate;
 
 	private String ipAddress;
 
@@ -58,7 +72,7 @@ public class CreateUserDTO extends BaseResult {
 		user.setUserName(createUserDTO.getUserName());
 		user.setEmail(createUserDTO.getEmail());
 		user.setMobilePhone(createUserDTO.getMobilePhone());
-		user.setAge(createUserDTO.getAge());
+		user.setBirthDate(createUserDTO.getBirthDate());
 		user.setTwitterId(createUserDTO.getTwitterId());
 		user.setInstagramId(createUserDTO.getInstagramId());
 		user.setFacebookId(createUserDTO.getFacebookId());
@@ -77,7 +91,7 @@ public class CreateUserDTO extends BaseResult {
 		createUserDTO.setUserName(user.getUserName());
 		createUserDTO.setEmail(user.getEmail());
 		createUserDTO.setMobilePhone(user.getMobilePhone());
-		createUserDTO.setAge(user.getAge());
+		createUserDTO.setBirthDate(user.getBirthDate());
 		createUserDTO.setTwitterId(user.getTwitterId());
 		createUserDTO.setInstagramId(user.getInstagramId());
 		createUserDTO.setFacebookId(user.getFacebookId());

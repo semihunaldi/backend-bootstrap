@@ -24,7 +24,7 @@ public class CustomJWTUserDetailsService implements UserDetailsService {
 		// Let people login with either username or email
 		User user = userJWTRepository.findByUserNameOrEmail(usernameOrEmail, usernameOrEmail)
 				.orElseThrow(() ->
-						new UsernameNotFoundException("User not found with username or email : " + usernameOrEmail)
+						new UsernameNotFoundException("User not found with userName or email : " + usernameOrEmail)
 				);
 
 		return UserPrincipal.create(user);

@@ -32,8 +32,8 @@ public class UserController {
     }
 
     @GetMapping("/user/checkUsernameAvailability")
-    public UserIdentityAvailability checkUsernameAvailability(@RequestParam(value = "username") String username) {
-        Boolean isAvailable = !userJWTRepository.existsByUserName(username);
+    public UserIdentityAvailability checkUsernameAvailability(@RequestParam(value = "userName") String userName) {
+        Boolean isAvailable = !userJWTRepository.existsByUserName(userName);
         return new UserIdentityAvailability(isAvailable);
     }
 
@@ -43,10 +43,17 @@ public class UserController {
         return new UserIdentityAvailability(isAvailable);
     }
 
-    @GetMapping("/users/{username}")
-    public UserProfile getUserProfile(@PathVariable(value = "username") String username) {
-        User user = userJWTRepository.findByUserName(username)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
-        return new UserProfile(user.getId(), user.getUserName(), user.getName(), user.getCreateTime());
+    @GetMapping("/users/{userName}")
+    public UserProfile getUserProfile(@PathVariable(value = "userName") String userName) {
+        User user = userJWTRepository.findByUserName(userName).orElseThrow(() -> new ResourceNotFoundException("User", "userName", userName));
+        return UserProfile.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .userName(user.getUserName())
+                .joinedAt(user.getCreateTime())
+                .email(user.getEmail())
+                .mobilePhone(user.getMobilePhone())
+                .birthDate(user.getBirthDate())
+                .build();
     }
 }

@@ -2,6 +2,8 @@ package com.semihunaldi.backendbootstrap.entitymodel.user;
 
 import com.google.common.collect.Sets;
 import com.semihunaldi.backendbootstrap.entitymodel.AbstractEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -33,12 +39,20 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true, of = "")
 @Where(clause = "DELETED = '0'")
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class User extends AbstractEntity {
 
+	@NotBlank
+	@Size(min = 4, max = 40)
 	private String name;
 
+	@NotBlank
+	@Size(min = 3, max = 15)
 	private String userName;
 
+	@NotBlank
+	@Size(max = 40)
 	@Email
 	private String email;
 
@@ -52,8 +66,10 @@ public class User extends AbstractEntity {
 
 	private String fcmTokenId;
 
-	private Integer age;
+	@NotNull
+	private Date birthDate;
 
+	@NotBlank
 	private String password;
 
 	@ManyToMany(fetch = FetchType.LAZY)
