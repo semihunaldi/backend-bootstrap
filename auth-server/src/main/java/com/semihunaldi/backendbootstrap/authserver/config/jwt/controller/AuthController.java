@@ -1,9 +1,9 @@
 package com.semihunaldi.backendbootstrap.authserver.config.jwt.controller;
 
-import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.ApiResponse;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.JwtAuthenticationResponse;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.LoginRequest;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.SignUpRequest;
+import com.semihunaldi.backendbootstrap.authserver.config.jwt.controller.model.SignUpResponse;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.JwtTokenProvider;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.RoleRepository;
 import com.semihunaldi.backendbootstrap.authserver.config.jwt.security.UserJWTRepository;
@@ -35,25 +35,25 @@ import java.util.Collections;
 @RestController
 @RequestMapping("/api/auth")
 @Profile("jwt")
-public class AuthController {
+public class AuthController extends BaseRestController {
 
 	@Autowired
-	AuthenticationManager authenticationManager;
+	private AuthenticationManager authenticationManager;
 
 	@Autowired
-	UserJWTRepository userJWTRepository;
+	private UserJWTRepository userJWTRepository;
 
 	@Autowired
-	RoleRepository roleRepository;
+	private RoleRepository roleRepository;
 
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	JwtTokenProvider tokenProvider;
+	private JwtTokenProvider tokenProvider;
 
 	@PostMapping("/signin")
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+	public ResponseEntity<JwtAuthenticationResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
 						loginRequest.getUsernameOrEmail(),
@@ -67,7 +67,7 @@ public class AuthController {
 
 	@PostMapping("/signup")
 	@Transactional
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+	public ResponseEntity<SignUpResponse> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if(userJWTRepository.existsByUserName(signUpRequest.getUserName())){
 			throw new UserExistsException();
 		}
@@ -88,6 +88,7 @@ public class AuthController {
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentContextPath().path("/users/{userName}")
 				.buildAndExpand(result.getUserName()).toUri();
-		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+		SignUpResponse signUpResponse = modelMapper.map(result, SignUpResponse.class);
+		return ResponseEntity.created(location).body(signUpResponse);
 	}
 }

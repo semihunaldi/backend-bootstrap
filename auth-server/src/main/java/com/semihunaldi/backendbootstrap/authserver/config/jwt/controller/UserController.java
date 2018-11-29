@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @Profile("jwt")
-public class UserController {
+public class UserController extends BaseRestController {
 
     @Autowired
     private UserJWTRepository userJWTRepository;
@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping("/user/me")
     @PreAuthorize("hasRole('USER')")
     public UserSummary getCurrentUser(@AuthenticationPrincipal UserPrincipal currentUser) {
-        return new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName());
+        return modelMapper.map(currentUser,UserSummary.class);
     }
 
     @GetMapping("/user/checkUsernameAvailability")

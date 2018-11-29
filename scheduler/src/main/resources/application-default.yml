@@ -3,4 +3,4 @@ spring:
     properties:
       hibernate:
         ejb:
-          interceptor: com.semihunaldi.backendbootstrap.authserver.config.jwt.interceptor.EntityCommonFieldInterceptor
+          interceptor: com.semihunaldi.backendbootstrap.entitymodel.interceptor.EntityCommonFieldInterceptor

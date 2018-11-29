@@ -1,8 +1,8 @@
-package com.semihunaldi.backendbootstrap.authserver.config.jwt.interceptor;
+package com.semihunaldi.backendbootstrap.entitymodel.interceptor;
 
 import com.google.common.base.Optional;
 import com.semihunaldi.backendbootstrap.entitymodel.AbstractEntity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 import org.slf4j.Logger;

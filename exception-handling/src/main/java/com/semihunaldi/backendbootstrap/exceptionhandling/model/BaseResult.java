@@ -7,7 +7,7 @@ import lombok.Data;
  */
 
 @Data
-public class BaseResult {
+public class BaseResult implements IBaseResult {
 
 	private ErrorMessage errorMessage = null;
 

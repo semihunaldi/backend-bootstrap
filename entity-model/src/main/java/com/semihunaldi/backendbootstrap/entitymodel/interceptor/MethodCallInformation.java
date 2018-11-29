@@ -1,4 +1,4 @@
-package com.semihunaldi.backendbootstrap.authserver.config.jwt.interceptor;
+package com.semihunaldi.backendbootstrap.entitymodel.interceptor;
 
 import lombok.Data;
 
