@@ -4,10 +4,12 @@ import com.semihunaldi.backendbootstrap.exceptionhandling.model.BaseResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@EqualsAndHashCode(callSuper = false, of = "id")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

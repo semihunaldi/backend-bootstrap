@@ -36,7 +36,7 @@ import java.util.Set;
 		@UniqueConstraint(name = "T_USER_INSTAGRAM_ID_UNIQUE", columnNames = "instagramId"),
 		@UniqueConstraint(name = "T_USER_EMAIL_UNIQUE", columnNames = "email")})
 @DynamicUpdate
-@EqualsAndHashCode(callSuper = true, of = "")
+@EqualsAndHashCode(callSuper = true)
 @Where(clause = "DELETED = '0'")
 @NoArgsConstructor
 @Builder

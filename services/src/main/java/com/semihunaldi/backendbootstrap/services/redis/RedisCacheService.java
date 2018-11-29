@@ -19,6 +19,7 @@ import java.util.Set;
  * Created by semihunaldi on 22.11.2018
  */
 
+@SuppressWarnings("unchecked")
 @Component
 @Profile("redis-cache")
 public class RedisCacheService implements CacheService {
