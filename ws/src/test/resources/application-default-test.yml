@@ -5,3 +5,14 @@ spring:
         session_factory:
           interceptor: com.semihunaldi.backendbootstrap.entitymodel.interceptor.EntityCommonFieldInterceptor
     open-in-view: true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            mongo:
+              embedded: error
+      mongodb: error
