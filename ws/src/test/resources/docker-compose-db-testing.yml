@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:9.5.15-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: backend-bootstrap-user
+      POSTGRES_DB: backendbootstrapdb
+    volumes:
+      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+#
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: backend-bootstrap-user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+#
