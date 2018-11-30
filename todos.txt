@@ -2,4 +2,4 @@ liquibase or flyway
 ui module -> jsf and js/html(tymeleaf? or angular or ???)
 elasticsearch?
 kafka?
-proper junit spring boot testing with mocks vs
+spring test inmemory mongo

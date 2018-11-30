@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -34,12 +34,5 @@ spring:
 
 app:
   properties:
-    resourceId: ${RESOURCE_ID:backend-bootstrap-api}
-    developerName: Semih Unaldi
-    developerUrl: https://www.semihunaldi.com
-    developerMail: semihunaldi@gmail.com
-    authServer: http://localhost:8081
-    clientId: curl_client
-    clientSecret: password
     jwtSecret: JWTSuperSecretKey
     jwtExpirationInMs: 604800000
