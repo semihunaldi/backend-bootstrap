@@ -48,6 +48,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    enabled: false
   instance:
     preferIpAddress: true
 

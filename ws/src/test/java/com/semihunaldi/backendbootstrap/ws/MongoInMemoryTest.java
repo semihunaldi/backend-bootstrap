@@ -10,8 +10,8 @@ import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
@@ -23,19 +23,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MongoInMemoryTest {
 
-	private MongodExecutable mongodExecutable;
-	private MongoTemplate mongoTemplate;
+	private static MongodExecutable mongodExecutable;
+	private static MongoTemplate mongoTemplate;
 
 	private static final String ip = "localhost";
 	private static final int port = 27017;
 
-	@After
-	public void clean() {
+	@AfterClass
+	public static void clean() {
 		mongodExecutable.stop();
 	}
 
-	@Before
-	public void init() throws Exception {
+	@BeforeClass
+	public static void init() throws Exception {
 
 		IMongodConfig mongodConfig = new MongodConfigBuilder().version(Version.Main.PRODUCTION)
 				.net(new Net(ip, port, Network.localhostIsIPv6()))

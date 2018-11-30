@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = {BackendBootstrapWSApplication.class})
 @AutoConfigureMockMvc
 @EnableAutoConfiguration(exclude = {EurekaClientAutoConfiguration.class})
-@ActiveProfiles(value = {"default-test", "dev-test", "jwt"})
+@ActiveProfiles(value = {"default-test", "dev-test", "dev", "jwt"})
 public class UserWebServiceControllerTest extends BaseWebServiceControllerTest {
 
 	@Test
