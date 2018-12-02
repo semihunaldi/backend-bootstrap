@@ -36,6 +36,7 @@
         <module>web-flux</module>
         <module>jwt-auth-common</module>
         <module>exception-handling</module>
+        <module>ui-thymeleaf</module>
     </modules>
 
     <packaging>pom</packaging>
