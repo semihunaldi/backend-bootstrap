@@ -1,0 +1,16 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    default-encoding: UTF-8
+    username: username
+    password: password
+    port: 587
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        debug: true

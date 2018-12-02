@@ -3,3 +3,5 @@ ui module -> jsf and js/html(tymeleaf? or angular or ???)
 elasticsearch?
 kafka?
 spring test inmemory mongo
+
+notification job
