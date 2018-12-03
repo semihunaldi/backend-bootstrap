@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class BackendBootstrapWebFluxApplication {
+public class WebFluxApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendBootstrapWebFluxApplication.class,args);
+		SpringApplication.run(WebFluxApplication.class,args);
 	}
 }
