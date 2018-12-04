@@ -1,5 +1,5 @@
 spring:
   application:
-    name: backend-bootstrap
+    name: ui-jsf
   profiles:
     active: default,dev
