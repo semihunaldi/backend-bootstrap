@@ -53,6 +53,7 @@ eureka:
     eureka-server-connect-timeout-seconds: 15
   instance:
     preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 app:
   properties:

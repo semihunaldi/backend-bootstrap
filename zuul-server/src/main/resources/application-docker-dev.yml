@@ -15,3 +15,7 @@ management:
     web:
       exposure:
         include: routes
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  ignore-security-headers: false
