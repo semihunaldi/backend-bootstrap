@@ -39,6 +39,19 @@ services:
 #      - SPRING_PROFILES_ACTIVE=default,docker-dev
 #
 
+  zuul-server:
+    hostname: backendbootstrap-zuul-server
+    restart: always
+    build:
+      context: zuul-server
+    depends_on:
+      - mongo
+      - postgres
+    ports:
+      - "8762:8762"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default,docker-dev
+
   eureka-server:
     hostname: backendbootstrap-eureka-server
     restart: always
@@ -47,6 +60,7 @@ services:
     depends_on:
       - mongo
       - postgres
+      - zuul-server
     ports:
       - "8761:8761"
     environment:
