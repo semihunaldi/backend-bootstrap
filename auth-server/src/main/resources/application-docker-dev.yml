@@ -36,6 +36,7 @@ eureka:
       defaultZone: ${EUREKA_URI:http://eureka-server:8761/eureka}
     eureka-server-connect-timeout-seconds: 15
   instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     preferIpAddress: true
 
   h2:

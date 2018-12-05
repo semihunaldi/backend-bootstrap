@@ -1,5 +1,5 @@
 spring:
   application:
-    name: web-flux
+    name: zuul-server
   profiles:
     active: default,dev

@@ -37,6 +37,7 @@
         <module>jwt-auth-common</module>
         <module>exception-handling</module>
         <module>ui-thymeleaf</module>
+        <module>zuul-server</module>
     </modules>
 
     <packaging>pom</packaging>

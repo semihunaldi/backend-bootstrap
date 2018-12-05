@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = {BackendBootstrapWSApplication.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = {WSApplication.class})
 @AutoConfigureMockMvc
 @EnableAutoConfiguration(exclude = {EurekaClientAutoConfiguration.class})
 @ActiveProfiles(value = {"default-test", "dev-test", "dev", "jwt"})

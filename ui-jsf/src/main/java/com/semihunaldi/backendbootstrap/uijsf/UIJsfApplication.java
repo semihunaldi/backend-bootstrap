@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class BackendBootstrapUIJsfApplication {
+public class UIJsfApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendBootstrapUIJsfApplication.class, args);
+		SpringApplication.run(UIJsfApplication.class, args);
 	}
 }

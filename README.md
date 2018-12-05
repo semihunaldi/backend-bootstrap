@@ -15,9 +15,10 @@ Project Running Order
 
 0. config-server (if not used properties will be used from classpath)
 1. eureka-server
-2. auth-server
-3. ws
-4. scheduler (only dependent to db's, order doesn't matter)
+2. zuul-server
+3. auth-server
+4. ws
+5. scheduler (only dependent to db's, order doesn't matter)
 
 ```
 
@@ -37,6 +38,7 @@ Modules
     <module>web-flux</module>
     <module>jwt-auth-common</module>
     <module>exception-handling</module>
+    <module>zuul-server</module>
 </modules>
 ```
 
@@ -51,3 +53,4 @@ Modules
 [web-flux](./web-flux/README.md)<br/>
 [jwt-auth-common](./jwt-auth-common/README.md)<br/>
 [exception-handling](./exception-handling/README.md)<br/>
+[zuul-server](./zuul-server/README.md)<br/>
