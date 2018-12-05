@@ -38,6 +38,7 @@ Modules
     <module>web-flux</module>
     <module>jwt-auth-common</module>
     <module>exception-handling</module>
+    <module>ui-thymeleaf</module>
     <module>zuul-server</module>
 </modules>
 ```
@@ -53,4 +54,5 @@ Modules
 [web-flux](./web-flux/README.md)<br/>
 [jwt-auth-common](./jwt-auth-common/README.md)<br/>
 [exception-handling](./exception-handling/README.md)<br/>
+[ui-thymeleaf](./ui-thymeleaf/README.md)<br/>
 [zuul-server](./zuul-server/README.md)<br/>
