@@ -12,7 +12,7 @@
                 <script type="text/javascript">
                     function checkSite()
                     {
-                        var currentSite = window.location.hostname;
+                        var currentSite = window.location.hostname + ":" + window.location.port;
                         window.location = "http://" + currentSite;
                     }
                 </script>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="mainLayout">
+
+<head>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/moment.min.js"></script>
+    <script type="text/javascript" src="../js/Chart.min.js"></script>
+</head>
+
+<body>
+
+<div id="content" layout:fragment="content">
+
+    <div class="text-center">
+        <canvas id="myChart" width="1300" height="600"></canvas>
+    </div>
+
+    <script th:inline="javascript">
+        var ctx = document.getElementById("myChart");
+        var chartData = [[${chartData}]];
+
+        var data = {
+            datasets: [{
+                fill: false,
+                label: "Chart Data",
+                data: chartData
+            }]
+        };
+
+        var options = {
+            type: 'line',
+            backgroundColor: "rgba(196, 93, 105, 0.3)",
+            showLine: true,
+            data: data,
+            options: {
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
+        new Chart(ctx, options);
+    </script>
+</div>
+</body>
+</html>

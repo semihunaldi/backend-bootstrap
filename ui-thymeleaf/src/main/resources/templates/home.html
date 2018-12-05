@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="backendBootstrap"
-      xmlns:th="http://www.thymeleaf.org"
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="mainLayout">
-<head>
-    <link rel="stylesheet" th:href="@{../bootstrap/css/bootstrap.css}" type="text/css" media="screen"/>
-    <link rel="stylesheet" th:href="@{../css/messages.css}" type="text/css" media="screen"/>
-</head>
+
 <body>
 
-<div id="content" layout:fragment="content" class="container">
+<div id="content" layout:fragment="content">
+    <div class="starter-template">
+        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h2>
+            <span th:text="'Message: ' + ${appName}"></span>
+        </h2>
+        <form id="generateErrorForm" th:action="@{/home/generateError}" method="post" style="padding-top: 10px">
+            <button class="button" type="submit">Generate Error</button>
+        </form>
+        <form id="generateUnauthorizedErrorForm" th:action="@{/home/generateUnauthorizedError}" method="post" style="padding-top: 10px">
+            <button class="button" type="submit">Generate Unauthorized Error</button>
+        </form>
+        <form id="generateServiceUnavailableError" th:action="@{/home/generateServiceUnavailableError}" method="post" style="padding-top: 10px">
+            <button class="button" type="submit">Generate Unavailable Error</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
