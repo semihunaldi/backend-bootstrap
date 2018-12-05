@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="mainLayout">
+<body>
+
+<div id="content" layout:fragment="content">
+    <div class="starter-template">
+        <p th:text= "'Text Value: ' + ${formModel.textField}" />
+        <p th:text= "'Textarea Value: ' + ${formModel.textareaField}" />
+        <p th:text= "'Datetime Value: ' + ${formModel.datetimeField}" />
+        <p th:text= "'Color Value: ' + ${formModel.colorField}" />
+        <p th:text= "'Single Checkbox Value: ' + ${formModel.singleCheckboxField}" />
+        <p th:text= "'Multi Checkbox Value: ' + ${#strings.arrayJoin(formModel.multiCheckboxSelectedValues, ', ')}" />
+        <p th:text= "'Checkbox Value: ' + ${formModel.radioButtonSelectedValue}" />
+        <p th:text= "'Dropdown Value: ' + ${formModel.dropdownSelectedValue}" />
+    </div>
+</div>
+</body>
+</html>
