@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="mainLayout">
+      layout:decorate="~{mainLayout}">
 
 <head>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -25,13 +25,15 @@
             datasets: [{
                 fill: false,
                 label: "Chart Data",
-                data: chartData
+                data: chartData,
+                borderColor: "#3e95cd",
+                backgroundColor: "#c45850"
             }]
         };
 
         var options = {
             type: 'line',
-            backgroundColor: "rgba(196, 93, 105, 0.3)",
+            backgroundColor: "rgba(0, 0, 0, 1)",
             showLine: true,
             data: data,
             options: {
